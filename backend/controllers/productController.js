@@ -2,10 +2,13 @@ const productModel= require('../models/productModel')
 
 //get products - {{base_url}}/api/v1/products/
 //it is a handler function
-exports.getProducts = (req,res,next)=>{
+exports.getProducts =async (req,res,next)=>{
+    const products = await productModel.find();
+
     res.status(200).json({
         success: true,
-        message:"This route will show all the products in the database",
+        count:products.length,
+        products:products,
     })
 }
 
