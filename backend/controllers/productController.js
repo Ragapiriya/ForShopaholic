@@ -38,7 +38,7 @@ exports.getSingleProduct = async (req,res,next)=>{
     }
 
     res.status(201).json({
-        sucess:true,
+        success:true,
         product:product,
     })
 }
@@ -56,9 +56,9 @@ exports.updateProduct = async (req,res,next)=>{
             message:"Product not found" 
         })
     }
-    product = productModel.findByIdAndUpdate(req.params.id,req.body,{
-        new:true,
-        runValidators:true,
+    product = await productModel.findByIdAndUpdate(req.params.id,req.body,{
+        new:true,  //to only get the new product, not the old one
+        runValidators:true, //it will check whether the input satisfy the validation/condition we mentioned in the schema (required field) And if the data is not in the correct form, it will show the error msg we gave.
 
     });
     res.status(200).json({
@@ -71,19 +71,30 @@ exports.updateProduct = async (req,res,next)=>{
 
 //delete product --{{base_url}}/api/v1/products/:id
 exports.deleteProduct = async(req,res,next)=>{
-    let product= await productModel.findById(req.params.id);
-    if (!product)
-    {
-        return res.status(404).json({
-            success:false,
-            message:"Product not found",
-        })
+    try {
+                // const product= await productModel.findById(req.params.id);
+        const product = await productModel.findById(req.params.id);
+        if (!product)
+        {
+            return res.status(404).json({
+                success:false,
+                message:"Product not found",
+            })
+        }
+        // await product.remove();
+        await product.remove();
+        res.status(200).json({
+            success:true,
+            message:"Product deleted" 
+        });
     }
-    await product.remove();
-    res.status(200).json({
-        success:true,
-        message:"Product deleted"
-    })
+    catch (error) {
+        res.status(500).json({
+            success:false,
+            message:error.message
+        });
+    }
+   
 
 
 }
