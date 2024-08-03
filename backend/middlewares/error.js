@@ -5,12 +5,20 @@ module.exports = (err,req,res,next)=>{
             success:false,
             message:err.message,
             stack:err.stack,
+            error:err //there will be field of data including the name of the error, message, statuscode,etc,etc
         });
     }
     if(process.env.NODE_ENV == 'production'){ 
+
+        let message = err.message;
+        if(err.name == "ValidationError"){
+            message = Object.values(err.errors).map(value => value.message)
+        }
         res.status(err.statusCode).json({
+
             success:false,
-            message:err.message
+            message:err.message,
+
         });
     }
 }
