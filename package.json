@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon backend/server.js",
-    "dev":"set NODE_ENV=development && nodemon backend/server.js",
-    "prod":"set NODE_ENV=production && nodemon backend/server.js",
+    "dev":"set NODE_ENV=development&&nodemon backend/server.js",
+    "prod":"set NODE_ENV=production&&nodemon backend/server.js",
     "seeder":"node backend/utils/seeder.js"
   },
   "author": "Ragapiriya",

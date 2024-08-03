@@ -1,4 +1,5 @@
-const productModel= require('../models/productModel')
+const productModel= require('../models/productModel');
+const ErrorHandler = require('../utils/errorHandler');
 
 //get products - {{base_url}}/api/v1/products/
 //it is a handler function
@@ -31,10 +32,13 @@ exports.getSingleProduct = async (req,res,next)=>{
     const product= await productModel.findById(req.params.id);
     if (!product)
     {
-        return res.status(404).json({
-            success:false,
-            message:"Product not found",
-        })
+        // return res.status(404).json({
+        //     success:false,
+        //     message:"Product not found",
+        // })
+        return next(new ErrorHandler("Product Not Found",404));  //this is a object passed to next middleware bcuz it shoule be returned without going further donw to succes message.
+        
+
     }
 
     res.status(201).json({
