@@ -5,16 +5,16 @@ const APIfeatures =  require('../utils/apiFeatures');
 
 //get products - {{base_url}}/api/v1/products/
 //it is a handler function
-exports.getProducts =async (req,res,next)=>{
-   const apiFeatures =  new APIfeatures(productModel.find(),req.query).search();
+exports.getProducts = async (req, res, next) => {
+    const apiFeatures = new APIfeatures(productModel.find(), req.query).filter().search();
     const products = await apiFeatures.query;
-
-    res.status(200).json({
+    // const products = await productModel.find();
+    res.status(200).json({ 
         success: true,
-        count:products.length,
-        products:products,
-    })
-}
+        count: products.length,
+        products: products,
+    });
+};
 
 //create product - {{base_url}}/api/v1/products/new/
 //it is a handler function
