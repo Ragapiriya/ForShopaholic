@@ -29,7 +29,17 @@ class APIfeatures {
                  $regex: queryStringCopy.category,
                   $options: 'i' }; 
         }
-        this.query.find({...queryStringCopy}); // Spread the queryStringCopy into the find method
+
+        let queryString = JSON.stringify(queryStringCopy); //to add $ sign
+        queryString = queryString.replace(/\b(gt|gte|lt|lte)/g, match => `$${match}`);
+
+        console.log("Filtered Query params for price : ",queryString);
+
+
+
+
+        // this.query.find({...queryStringCopy}); // input the queryStringCopy into the find method
+        this.query.find(JSON.parse(queryString)) //change string into object, then only mongodb can further proceed
         return this; // Returning object
     }
 }
