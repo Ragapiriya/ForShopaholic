@@ -17,11 +17,11 @@ module.exports = (err,req,res,next)=>{
 
         if(err.name == "ValidationError"){
             message = Object.values(err.errors).map(value => value.message)
-            error = new Error(message);
+            error = new ErrorHandler(message);
         }
         if(err.name == "CastError"){
-            message = `Resource not found ${err.path}`;;
-            error = new Error(message);
+            message = "Resource not found" ;
+            error = new ErrorHandler(message);
 
             
         }

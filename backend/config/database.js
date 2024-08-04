@@ -6,7 +6,7 @@ const connectDatabase= ()=>{
         // useUnifiedTopology:true
     })
     .then((con)=>{console.log(`MongoDb is connected to the host: ${con.connection.host}`)})
-    .catch((error)=>{console.log(`Error: ${error}`)})
+    // .catch((error)=>{console.log(`Error: ${error}`)})
 }
 
 module.exports=connectDatabase;
