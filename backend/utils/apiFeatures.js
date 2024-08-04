@@ -42,6 +42,12 @@ class APIfeatures {
         this.query.find(JSON.parse(queryString)) //change string into object, then only mongodb can further proceed
         return this; // Returning object
     }
+
+    paginate(resultPerPage)
+    {
+        const currentPage = Number(this.queryString.page) || 1;
+        const skip = resultPerPage * currentPage -1
+    }
 }
 
 module.exports = APIfeatures;

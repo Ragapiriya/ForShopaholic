@@ -6,7 +6,8 @@ const APIfeatures =  require('../utils/apiFeatures');
 //get products - {{base_url}}/api/v1/products/
 //it is a handler function
 exports.getProducts = async (req, res, next) => {
-    const apiFeatures = new APIfeatures(productModel.find(), req.query).filter().search();
+    const resultPerPage = 2;
+    const apiFeatures = new APIfeatures(productModel.find(), req.query).filter().search().paginate(resultPerPage);
     const products = await apiFeatures.query;
     // const products = await productModel.find();
     res.status(200).json({ 
