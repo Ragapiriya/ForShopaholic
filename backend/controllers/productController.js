@@ -31,15 +31,11 @@ exports.newProduct = catchAsyncError (async (req,res,next)=>{
 
 //get single product - {{base_url}}/api/v1/product/:id
 //it is a handler function 
-
 exports.getSingleProduct = async (req,res,next)=>{ 
     const product= await productModel.findById(req.params.id);
     if (!product)
     {
-        // return res.status(404).json({
-        //     success:false,
-        //     message:"Product not found",
-        // })
+     
         return next(new ErrorHandler("Product Not Found",404));  //this is a object passed to next middleware bcuz it shoule be returned without going further donw to succes message.
         
 
