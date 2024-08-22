@@ -46,3 +46,14 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
   //email exists and password is correct
   sendToken(user, 201, res);
 });
+
+exports.logoutUser = (req,res,next) => {
+  //make the token null
+  res.cookie('token',null,{
+    expires: new Date(Date.now()),
+    httpOnly:true
+  }).status(200).json({
+    success:true,
+    message:'Loggedout successfully'
+  })
+}
