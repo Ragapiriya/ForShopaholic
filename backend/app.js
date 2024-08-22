@@ -3,9 +3,14 @@ const app= express();
 const products = require('./routes/product');
 const auth =  require('./routes/auth');
 const errorMiddleware=require('./middlewares/error');
+const cookieParser = require('cookie-parser');
 
 
+//middlewares
 app.use(express.json());
+app.use(cookieParser());
+
+
 app.use('/api/v1/',products); //1st URL, 2nd Route
 app.use('/api/v1/',auth); //1st URL, 2nd Route
 
