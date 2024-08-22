@@ -20,6 +20,8 @@ exports.getProducts = async (req, res, next) => {
 //create product - {{base_url}}/api/v1/products/new/
 //it is a handler function
 exports.newProduct = catchAsyncError (async (req,res,next)=>{
+
+    req.body.user = req.user.id; 
     const product = await productModel.create(req.body);
     res.status(201).json({
         success:true,
