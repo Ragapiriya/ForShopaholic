@@ -60,3 +60,30 @@ exports.logoutUser = (req, res, next) => {
       message: "Loggedout successfully",
     });
 };
+
+exports.forgotPassword = catchAsyncError(async (req,res,next)=> {
+  const user = await userModel.findOne({email:req.body.email});
+  if(!user)
+  {
+    return next(new ErrorHandler('User not found with this email',404));
+  }
+  const resetToken = user.getResetToken();
+  user.save({validateBeforeSave: false}); //update user document
+
+  //create reset url for backend api [ not for frontend]
+  const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/password/reset/${resetToken}`  //= http://127.0.0.1/api/v1/password/token/{token}
+
+  //message content for email
+  const message = `Your password reset url is as follows \n\n ${resetUrl} \n\n If you have not requested this email, then ignore it.`
+
+  //sending email 
+  try{
+
+  }catch(err){ //email cannot be sent - internal server error
+    user.resetPasswordToken = undefined;
+    user.resetPasswordTokenExpire = undefined;
+    await user.save({validateBeforeSave: false}); //update user document
+    return next(new ErrorHandler(err.message),500)
+  }
+
+});

@@ -56,11 +56,18 @@ userSchema.methods.isValidPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-
-userSchema.methods.resetPassword = function () {
-  //generate token specifically to reset the password
+//create token for resetting a password. 
+userSchema.methods.getResetToken = function () {
+  //generate token specifically to reset the password [not jwt ??] 
   const token = crypto.randomBytes(20).toString('hex');
-  
+
+  //generate hash and set to resetPasswordToken
+  this.resetPasswordToken = crypto.createHash('sha256').update(token).digest('hex')
+
+  //set resetPasswordTokenExpire
+   this.resetPasswordTokenExpire = Date.now() + 30 *60 * 1000;
+   
+   return token; 
 }
 
 
