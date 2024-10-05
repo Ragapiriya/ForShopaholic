@@ -13,13 +13,13 @@ exports.registerUser = catchAsyncError(async (req, res, next) => {
     avatar,
   });
 
-  const token = user.getJwtToken();
-
+  // const token = user.getJwtToken();
   // res.status(201).json({
   //   success: true,
   //   user: user,
   //   token: token,
   // });
+  
   sendToken(user, 201, res);
 });
 
@@ -27,14 +27,14 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
     //either email or password not given
-    return next(new ErrorHandler("Please enter email and password", 400)); //400-the server cannot or will not process the request due to something that is perceived to be a client error.
+    return next(new ErrorHandler("Please enter email and password", 400)); //400 Bad request-the server cannot or will not process the request due to something that is perceived to be a client error.
   }
 
   //fetching user's details based on email.
   const user = await userModel.findOne({ email }).select("+password");
   if (!user) {
     //no such email
-    return next(new ErrorHandler("Invalid email or password", 401)); // 401- the request lacks valid authentication credentials for the requested resource.
+    return next(new ErrorHandler("Invalid email or password", 401)); // 401 aunthorized- the request lacks valid authentication credentials for the requested resource.
   }
 
   //email exists
@@ -47,13 +47,16 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
   sendToken(user, 201, res);
 });
 
-exports.logoutUser = (req,res,next) => {
+exports.logoutUser = (req, res, next) => {
   //make the token null
-  res.cookie('token',null,{
-    expires: new Date(Date.now()),
-    httpOnly:true
-  }).status(200).json({
-    success:true,
-    message:'Loggedout successfully'
-  })
-}
+  res
+    .cookie("token", null, {
+      expires: new Date(Date.now()),
+      httpOnly: true,
+    })
+    .status(200)
+    .json({
+      success: true,
+      message: "Loggedout successfully",
+    });
+};

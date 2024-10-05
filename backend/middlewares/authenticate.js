@@ -9,8 +9,9 @@ exports.isAuthenticatedUser = catchAsyncError(async (req,res,next)=>{
     if(!token)
     {  //no token [expired]
         return next(new ErrorHandler('Login first to handle this resource',401));
+        // terminate the access to the resource
     }
-
+    //token exists
     //decoding token to get original data [actually we sent userid as data.]
     const decoded = jwt.verify(token, process.env.JWT_SECRET); //= userid
 
