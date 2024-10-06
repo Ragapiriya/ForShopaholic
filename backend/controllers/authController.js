@@ -4,6 +4,8 @@ const userModel = require("../models/userModel");
 const catchAsyncError = require("../middlewares/catchAsyncError");
 const ErrorHandler = require("../utils/errorHandler");
 const sendToken = require("../utils/jwt");
+const sendEmail = require("../utils/email");
+const crypto = require("crypto");
 exports.registerUser = catchAsyncError(async (req, res, next) => {
   const { name, email, password, avatar } = req.body;
   const user = await userModel.create({
@@ -19,7 +21,7 @@ exports.registerUser = catchAsyncError(async (req, res, next) => {
   //   user: user,
   //   token: token,
   // });
-  
+
   sendToken(user, 201, res);
 });
 
@@ -61,29 +63,63 @@ exports.logoutUser = (req, res, next) => {
     });
 };
 
-exports.forgotPassword = catchAsyncError(async (req,res,next)=> {
-  const user = await userModel.findOne({email:req.body.email});
-  if(!user)
-  {
-    return next(new ErrorHandler('User not found with this email',404));
+exports.forgotPassword = catchAsyncError(async (req, res, next) => {
+  const user = await userModel.findOne({ email: req.body.email });
+  if (!user) {
+    return next(new ErrorHandler("User not found with this email", 404));
   }
   const resetToken = user.getResetToken();
-  user.save({validateBeforeSave: false}); //update user document
+  await user.save({ validateBeforeSave: false }); //update user document
 
   //create reset url for backend api [ not for frontend]
-  const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/password/reset/${resetToken}`  //= http://127.0.0.1/api/v1/password/token/{token}
+  const resetUrl = `${req.protocol}://${req.get(
+    "host"
+  )}/api/v1/password/reset/${resetToken}`; //= http://127.0.0.1/api/v1/password/token/{token}
 
   //message content for email
-  const message = `Your password reset url is as follows \n\n ${resetUrl} \n\n If you have not requested this email, then ignore it.`
+  const message = `Your password reset url is as follows \n\n ${resetUrl} \n\n If you have not requested this email, then ignore it.`;
 
-  //sending email 
-  try{
+  //sending email
+  try {
+    sendEmail({
+      email: user.email,
+      subject: "ForShopaholic password resetting",
+      message: message,
+    });
 
-  }catch(err){ //email cannot be sent - internal server error
+    res.status(200).json({
+      success: true,
+      message: `Email sent to ${user.email}`,
+    });
+  } catch (err) {
+    //email cannot be sent - internal server error
     user.resetPasswordToken = undefined;
     user.resetPasswordTokenExpire = undefined;
-    await user.save({validateBeforeSave: false}); //update user document
-    return next(new ErrorHandler(err.message),500)
+    await user.save({ validateBeforeSave: false }); //update user document
+    return next(new ErrorHandler(err.message), 500);
+  }
+});
+
+exports.resetPassword = catchAsyncError(async (req, res, next) => {
+  //getting the token from API url and hash it to get the details of the user
+
+  const resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(req.params.token)
+    .digest("hex");
+
+  //getting user details who has the same resetPasswordToken & expires time is greater than now time.
+  const user = await userModel.findOne({
+    resetPasswordToken,
+    resetPasswordTokenExpire: {
+      $gt: Date.now(),
+    },
+  });
+
+  //such user doesn't exist
+  if (!user) {
+    return next(new ErrorHandler("Password reset token is invalid or expired"));
   }
 
+  // user exists
 });
