@@ -122,4 +122,18 @@ exports.resetPassword = catchAsyncError(async (req, res, next) => {
   }
 
   // user exists
+  //checking whether the both fields sent through the request are same or not
+  if(req.body.password !== req.body.confirmPassword)
+  {
+    return next(new ErrorHandler('Password does not match'));
+  }
+
+  user.password = req.body.password; //new password
+  user.resetPasswordToken = undefined; //removing fields
+  user.resetPasswordTokenExpire = undefined;
+
+  await user.save({validateBeforeSave:false});
+  sendToken(user,201,res);
+
+
 });
