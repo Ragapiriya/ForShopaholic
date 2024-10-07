@@ -6,9 +6,12 @@ const {isAuthenticatedUser, authorizeRoles} = require('../middlewares/authentica
 
 
 router.route('/products').get(isAuthenticatedUser, getProducts);
-router.route('/products/new').post(isAuthenticatedUser,authorizeRoles('admin'),newProduct);
 router.route('/product/:id').get(getSingleProduct); //'id' is a parameter
 router.route('/product/:id').put(updateProduct);
 router.route('/product/:id').delete(deleteProduct);
+
+
+//ADMIN
+router.route('/admin/products/new').post(isAuthenticatedUser,authorizeRoles('admin'),newProduct);
 
 module.exports=router; 

@@ -6,6 +6,8 @@ const ErrorHandler = require("../utils/errorHandler");
 const sendToken = require("../utils/jwt");
 const sendEmail = require("../utils/email");
 const crypto = require("crypto");
+
+//register User- /api/v1/register
 exports.registerUser = catchAsyncError(async (req, res, next) => {
   const { name, email, password, avatar } = req.body;
   const user = await userModel.create({
@@ -25,6 +27,7 @@ exports.registerUser = catchAsyncError(async (req, res, next) => {
   sendToken(user, 201, res);
 });
 
+//login User - /api/v1/login
 exports.loginUser = catchAsyncError(async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -49,6 +52,7 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
   sendToken(user, 201, res);
 });
 
+//logout user - /api/v1/logout
 exports.logoutUser = (req, res, next) => {
   //make the token null
   res
@@ -63,6 +67,7 @@ exports.logoutUser = (req, res, next) => {
     });
 };
 
+//forgotpassword - /api/v1/passwprd/forgot
 exports.forgotPassword = catchAsyncError(async (req, res, next) => {
   const user = await userModel.findOne({ email: req.body.email });
   if (!user) {
@@ -100,6 +105,7 @@ exports.forgotPassword = catchAsyncError(async (req, res, next) => {
   }
 });
 
+//reset password-  /api/v1/password/reset/:token
 exports.resetPassword = catchAsyncError(async (req, res, next) => {
   //getting the token from API url and hash it to get the details of the user
 
@@ -123,17 +129,119 @@ exports.resetPassword = catchAsyncError(async (req, res, next) => {
 
   // user exists
   //checking whether the both fields sent through the request are same or not
-  if(req.body.password !== req.body.confirmPassword)
-  {
-    return next(new ErrorHandler('Password does not match'));
+  if (req.body.password !== req.body.confirmPassword) {
+    return next(new ErrorHandler("Password does not match"));
   }
 
   user.password = req.body.password; //new password
   user.resetPasswordToken = undefined; //removing fields
   user.resetPasswordTokenExpire = undefined;
 
-  await user.save({validateBeforeSave:false});
-  sendToken(user,201,res);
+  await user.save({ validateBeforeSave: false });
+  sendToken(user, 201, res);
+});
 
+//get user profile - /api/v1/myprofile
+exports.getUserProfile = catchAsyncError(async (req, res, next) => {
+  const user = await userModel.findById(req.user.id); //id is received from the request from isAuthenticated middleware.
+  res.status(200).json({
+    success: true,
+    user: user,
+  });
+});
 
+//change password - /api/v1/password/change
+exports.changePassword = catchAsyncError(async (req, res, next) => {
+  const user = await userModel.findById(req.user.id).select("+password"); //id is received from the request from isAuthenticated middleware.
+
+  //checking current password
+  if (!(await user.isValidPassword(req.body.currentPassword))) {
+    //doesn't match
+    return next(new ErrorHandler("Current password is incorrect", 401));
+  }
+  //match correctly
+  //assigning new password
+  user.password = req.body.newPassword;
+  await user.save({ validateBeforeSave: false });
+
+  res.status(200).json({
+    success: true,
+  });
+});
+
+//update profile - /api/v1/update
+exports.updateProfile = catchAsyncError(async (req, res, next) => {
+  const newUserData = {
+    name: req.body.name,
+    email: req.body.email,
+  };
+
+  const user = await userModel.findByIdAndUpdate(req.user.id, newUserData, {
+    new: true,
+    runValidators: true,
+  }); //id is received from the request from isAuthenticated middleware.
+
+  res.status(201).json({
+    success: true,
+    user: user,
+  });
+});
+
+//ADMIN
+//get all users - /api/v1/admin/users
+exports.getAllUsers = catchAsyncError(async (req, res, next) => {
+  const users = await userModel.find();
+  res.status(200).json({
+    success: true,
+    users,
+  });
+});
+
+//ADMIN
+//get a specific user - /api/v1/admin/user/:id
+exports.getUser = catchAsyncError(async (req, res, next) => {
+  const user = await userModel.findById(req.params.id);
+  if (!user) {
+    //user id doesn't exist
+    return next(new ErrorHandler(`User ${req.params.id} not found`, 404));
+  }
+  //user id exists
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
+
+//ADMIN
+//update user- /api/v1/admin/user/:id
+exports.updateUser = catchAsyncError(async (req, res, next) => {
+  const newData = {
+    role: req.body.role,
+  };
+
+  const user = await userModel.findByIdAndUpdate(req.params.id, newData, {
+    new: true,
+    runValidators: true,
+  });
+
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
+
+//ADMIN
+//delete user- /api/v1/admin/user/:id
+exports.deleteUser = catchAsyncError(async (req, res, next) => {
+  const user = await userModel.findById(req.params.id);
+  if (!user) {
+    //user doesn't exist
+    return next(new ErrorHandler(`User ${req.params.id} not found`, 404));
+  }
+  //user exists
+  //proceeds to deletion
+  await userModel.remove();
+  res.status(200).json({
+    success: true,
+  });
 });
