@@ -1,6 +1,8 @@
 const catchAsyncError = require("../middlewares/catchAsyncError");
 const orderModel = require("../models/orderModel");
 const userModel = require("../models/userModel");
+const productModel = require("../models/productModel");
+
 const ErrorHandler = require("../utils/errorHandler");
 //create new order - /api/v1/order/new
 exports.newOrder = catchAsyncError(async (req, res, next) => {
@@ -70,16 +72,51 @@ exports.orders = catchAsyncError(async (req, res, next) => {
   });
 });
 
+//ADMIN
 //update order [order status & stock] - /api/v1/order/:id
 exports.updateOrder = catchAsyncError(async (req, res, next) => {
   const order = await orderModel.findById(req.params.id);
-  if(order.orderStatus == 'Delivered')
-  {
-    return next(new ErrorHandler('Order ${req.params.id} has been already delivered. Cannot be modified.',400));
+  if (order.orderStatus == "Delivered") {
+    //Delivered already
+    return next(
+      new ErrorHandler(
+        "Order ${req.params.id} has been already delivered. Status cannot be modified.",
+        400
+      )
+    );
   }
-  order.orderItems.forEach(orderItem =>{
-    
-  })
 
+  //Not delivered yet
+  //1. updating product stock of each order item.
+  order.orderItems.forEach(async (orderItem) => {
+    await updateStock(orderItem.product, orderItem.quantity);
+  });
+  //2. Processing --> Delivered status
+  order.orderStatus = req.body.orderStatus;
+  order.deliveredAt = Date.now(); //at the time of status changes.
+
+  await order.save();
+
+  res.status(200).json({
+    success: true,
+  });
 });
 
+//ADMIN
+//delete order - api/v1/order/:id
+exports.deleteOrder = catchAsyncError(async (req, res, next) => {
+  const order = await orderModel.findById(req.params.id);
+  if (!order) {
+    return next(new ErrorHandler(`Order ${req.params.id} not found`, 404));
+  }
+  await order.remove();
+  res.status(200).json({
+    success: true,
+  });
+});
+
+async function updateStock(productId, quantity) {
+  const product = await productModel.findById(productId);
+  product.stock -= quantity;
+  product.save({ validateBeforeSave: false });
+}
