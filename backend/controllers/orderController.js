@@ -2,7 +2,7 @@ const catchAsyncError = require("../middlewares/catchAsyncError");
 const orderModel = require("../models/orderModel");
 const userModel = require("../models/userModel");
 const ErrorHandler = require("../utils/errorHandler");
-//create new order - api/v1/order/new
+//create new order - /api/v1/order/new
 exports.newOrder = catchAsyncError(async (req, res, next) => {
   const {
     orderItems,
@@ -42,6 +42,44 @@ exports.getSingleOrder = catchAsyncError(async (req, res, next) => {
   }
   res.status(200).json({
     success: true,
-    order
+    order,
   });
 });
+//get loggedin user orders -/api/v1/myorders
+exports.myOrders = catchAsyncError(async (req, res, next) => {
+  const orders = await orderModel.find({ user: req.user.id }); //user id is obtained from 'isAuthenticatedUser' middleware
+  res.status(200).json({
+    success: true,
+    orders,
+  });
+});
+
+//ADMIN
+//Get all orders - /api/v1/orders
+exports.orders = catchAsyncError(async (req, res, next) => {
+  const orders = await orderModel.find();
+
+  let totalAmount = 0; //total amount of all orders
+  orders.forEach((order) => {
+    totalAmount += order.totalPrice;
+  });
+  res.status(200).json({
+    success: true,
+    totalAmount,
+    orders,
+  });
+});
+
+//update order [order status & stock] - /api/v1/order/:id
+exports.updateOrder = catchAsyncError(async (req, res, next) => {
+  const order = await orderModel.findById(req.params.id);
+  if(order.orderStatus == 'Delivered')
+  {
+    return next(new ErrorHandler('Order ${req.params.id} has been already delivered. Cannot be modified.',400));
+  }
+  order.orderItems.forEach(orderItem =>{
+    
+  })
+
+});
+
