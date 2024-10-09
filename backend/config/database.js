@@ -9,4 +9,4 @@ const connectDatabase= ()=>{
     // .catch((error)=>{console.log(`Error: ${error}`)})
 }
 
-module.exports=connectDatabase;
+module.exports=connectDatabase; 
