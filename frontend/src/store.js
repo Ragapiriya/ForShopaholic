@@ -1,10 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { thunk } from "redux-thunk";
+import productsReducer from './slices/productsSlice';
 
 //reducer is for product, user, order
 //here we combine it
 const reducer = combineReducers({
-    
+    productsState : productsReducer
 });
 
   //returns a store object
@@ -15,3 +16,4 @@ const store = configureStore({
 });
 
 export default store;
+ 

@@ -6,9 +6,7 @@ import { Provider } from "react-redux"; //to provide the store obj through the a
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>
 );
