@@ -11,7 +11,7 @@ export const getProducts = async (dispatch) => {
     const { data } = await axios.get("/api/v1/products"); //data = json data
     dispatch(productsSuccess(data)); //dispatch another action after api call
   } catch (error) {
-    //handling error
+    //data is the json data with success,message fields
     dispatch(productsFail(error.response.data.message));
   }
 };

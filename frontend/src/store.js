@@ -1,11 +1,14 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { thunk } from "redux-thunk";
 import productsReducer from './slices/productsSlice';
+import productReducer from './slices/productSlice';
 
 //reducer is for product, user, order
 //here we combine it
 const reducer = combineReducers({
-    productsState : productsReducer
+    productsState : productsReducer,
+    productState : productReducer
+
 });
 
   //returns a store object
