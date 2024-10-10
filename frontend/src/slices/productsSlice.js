@@ -11,28 +11,28 @@ const productsSlice = createSlice({
     loading: false,
   },
   reducers: {
-    //reducer functionality 1
-    productsRequest(state, action) {
-      return {
-        loading: true,
-      };
-    },
-    //reducer functionality 2
-    productsSuccess(state, action) {
-      //successful API request
-      return {
-        loading: false,
-        products: action.payload.products,
-      };
-    },
-    //reducer functionality 3
-    productsFail(state, action) {
-      //Failed API request
-      return {
-        loading: false,
-        error: action.payload,
-      };
-    },
+        //reducer functionality 1
+        productsRequest(state, action) { //previous state, action dispatched
+          return {  //returning the state changes
+            loading: true,
+          }; 
+        }, 
+        //reducer functionality 2
+        productsSuccess(state, action) {
+          //successful API request
+          return {
+            loading: false,
+            products: action.payload.products,
+          };
+        },
+        //reducer functionality 3
+        productsFail(state, action) {
+          //Failed API request
+          return {
+            loading: false,
+            error: action.payload,
+          };
+        },
   },
 });
 
