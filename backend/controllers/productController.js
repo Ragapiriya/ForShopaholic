@@ -12,12 +12,12 @@ exports.getProducts = async (req, res, next) => {
     .search()
     .paginate(resultPerPage);
   const products = await apiFeatures.query;
-  // const products = await productModel.find();
-
+  const totalProductsCount = await productModel.countDocuments({}); //getting total productws count in the database
   res.status(200).json({
     success: true,
-    count: products.length,
+    count: totalProductsCount,
     products: products,
+    resultPerPage:resultPerPage
   });
 };
 

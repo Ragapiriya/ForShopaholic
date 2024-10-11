@@ -23,6 +23,8 @@ const productsSlice = createSlice({
           return {
             loading: false,
             products: action.payload.products,
+            productsCount : action.payload.count,
+            resultPerPage: action.payload.resultPerPage
           };
         },
         //reducer functionality 3
