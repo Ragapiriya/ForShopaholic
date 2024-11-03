@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Search() {
   const navigate = useNavigate();
+  const location = useLocation(); //it will give the current URL path
   const [keyword, setKeyword] = useState("");
 
   const searchHandler = (event) => {
@@ -10,6 +11,15 @@ export default function Search() {
     navigate(`/search/${keyword}`); //redirect to another url
   };
 
+  const clearKeyword = () => {
+    //removing keyword after navigate to home page
+    setKeyword("");
+  };
+  useEffect(() => {
+    if (location.pathname == "/") {
+      clearKeyword();
+    }
+  }, [location]);
   return (
     <form onSubmit={searchHandler}>
       <div className="input-group">
