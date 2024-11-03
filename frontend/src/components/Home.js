@@ -25,8 +25,8 @@ export default function Home() {
       });
     }
 
-    dispatch(getProducts(currentPage));
-  }, [dispatch, error,currentPage]);
+    dispatch(getProducts(null, currentPage));
+  }, [dispatch, error, currentPage]);
   return (
     <Fragment>
       <MetaData title={"Home"} />
@@ -51,7 +51,7 @@ export default function Home() {
                 activePage={currentPage} //1
                 onChange={setCurrentPageNo} //when clicking, pageNo should change
                 totalItemsCount={productsCount} //total product count in db
-                itemsCountPerPage={resultPerPage} //shows default value 
+                itemsCountPerPage={resultPerPage} //shows default value
                 nextPageText={"Next"}
                 firstPageText={"First"}
                 lastPageText={"Last"}

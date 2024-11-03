@@ -1,32 +1,34 @@
 import { Fragment, useEffect, useState } from "react";
-import MetaData from "../layouts/MetaData"
+import MetaData from "../layouts/MetaData";
 import { getProducts } from "../../actions/productsActions";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../layouts/Loader";
 import Product from "../product/Product";
 import { toast } from "react-toastify";
 import Pagination from "react-js-pagination";
+import { useParams } from "react-router-dom";
 
 export default function ProductSearch() {
   const dispatch = useDispatch();
   const { products, loading, error, productsCount, resultPerPage } =
-    useSelector((state) => {
-      return state.productsState;
+      useSelector((state) => {
+        return state.productsState;
     });
   const [currentPage, setCurrentPage] = useState(1); //current page - first page
   const setCurrentPageNo = (pageNo) => {
-    setCurrentPage(pageNo);
+      setCurrentPage(pageNo);
   };
+  const { keyword } = useParams(); //getting the keyword from the current url
   console.log(currentPage);
   useEffect(() => {
-    if (error) {
-      return toast.error(error, {
-        position: "bottom-center",
-      });
-    }
+        if (error) {
+          return toast.error(error, {
+            position: "bottom-center",
+          });
+        }
 
-    dispatch(getProducts(currentPage));
-  }, [dispatch, error,currentPage]);
+        dispatch(getProducts(keyword, currentPage));
+  }, [dispatch, error, currentPage, keyword]);
   return (
     <Fragment>
       <MetaData title={"Home"} />
@@ -51,7 +53,7 @@ export default function ProductSearch() {
                 activePage={currentPage} //1
                 onChange={setCurrentPageNo} //when clicking, pageNo should change
                 totalItemsCount={productsCount} //total product count in db
-                itemsCountPerPage={resultPerPage} //shows default value 
+                itemsCountPerPage={resultPerPage} //shows default value
                 nextPageText={"Next"}
                 firstPageText={"First"}
                 lastPageText={"Last"}
