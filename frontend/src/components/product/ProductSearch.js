@@ -1,43 +1,34 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect } from "react";
 import MetaData from "../layouts/MetaData";
-import { getProducts } from "../../actions/productsActions";
+import {  getSearchedProducts } from "../../actions/productsActions";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../layouts/Loader";
 import Product from "../product/Product";
-import { toast } from "react-toastify";
-import Pagination from "react-js-pagination";
+import { toast } from "react-toastify"; 
 import { useParams } from "react-router-dom";
 
 export default function ProductSearch() {
   const dispatch = useDispatch();
-  const { products, loading, error, productsCount, resultPerPage } =
-      useSelector((state) => {
-        return state.productsState;
-    });
-  const [currentPage, setCurrentPage] = useState(1); //current page - first page
-  const setCurrentPageNo = (pageNo) => {
-      setCurrentPage(pageNo);
-  };
-  const { keyword } = useParams(); //getting the keyword from the current url
-  console.log(currentPage);
-  useEffect(() => {
-        if (error) {
-          return toast.error(error, {
-            position: "bottom-center",
-          });
-        }
+  const { products, loading, error } = useSelector((state) => state.productsState);
+  const { keyword } = useParams(); // getting the keyword from the current url
 
-        dispatch(getProducts(keyword, currentPage));
-  }, [dispatch, error, currentPage, keyword]);
+  useEffect(() => {
+    if (error) {
+      return toast.error(error, { position: "bottom-center" });
+    }
+
+    // Fetch products without pagination
+    dispatch(getSearchedProducts(keyword));
+  }, [dispatch, error, keyword]);
+
   return (
     <Fragment>
       <MetaData title={"Home"} />
 
       {loading ? (
-        <Loader /> //"loading" animaion
+        <Loader />
       ) : (
         <Fragment>
-          {" "}
           <h1 id="products_heading">Search Products</h1>
           <section id="products" className="container mt-5">
             <div className="row">
@@ -47,21 +38,6 @@ export default function ProductSearch() {
                 ))}
             </div>
           </section>
-          {productsCount > 0 && productsCount > resultPerPage ? (
-            <div className="d-flex justify-content-center mt-5">
-              <Pagination
-                activePage={currentPage} //1
-                onChange={setCurrentPageNo} //when clicking, pageNo should change
-                totalItemsCount={productsCount} //total product count in db
-                itemsCountPerPage={resultPerPage} //shows default value
-                nextPageText={"Next"}
-                firstPageText={"First"}
-                lastPageText={"Last"}
-                itemClass={"page-item"}
-                linkClass={"page-link"}
-              />
-            </div>
-          ) : null}
         </Fragment>
       )}
     </Fragment>

@@ -77,20 +77,34 @@ class APIfeatures {
     removeFields.forEach((field) => delete queryStrCopy[field]);
     // console.log(queryStrCopy); //after filtering
 
-    let queryString = JSON.stringify(queryStrCopy);
-    queryString = queryString.replace(
-      /\b(gt|gte|lt|lte)/g,
-      (match) => `$${match}`
-    );
+    // let queryString = JSON.stringify(queryStrCopy);
+    // queryString = queryString.replace(
+    //   /\b(gt|gte|lt|lte)/g,
+    //   (match) => `$${match}`
+    // );
     // console.log(queryString);
-    this.query.find(JSON.parse(queryString));
+    this.query.find(queryStrCopy);
+    // this.query.find(JSON.parse(queryString));
 
     return this;
   }
+  // filterPrice()
+  // {
+  //   const queryStrCopy = { ...this.queryString };
+  //   const removeFields = ["category","keyword", "limit", "page"];
+  //   removeFields.forEach((field) => delete queryStrCopy[field]);
+  //   let queryString = JSON.stringify(queryStrCopy);
+  //   queryString = queryString.replace(
+  //     /\b(gt|gte|lt|lte)/g,
+  //     (match) => `$${match}`
+  //   );
+  //   this.query.find(JSON.parse(queryString));
+  //   return this;
+  // }
 
   paginate(resultPerPage) {
     const currentPage = Number(this.queryString.page) || 1; //if there are no page query paramter, the output will be the products that is intended to shown on the first page.
-    const skip = resultPerPage * currentPage - 1;
+    const skip = resultPerPage * (currentPage - 1);
     this.query.limit(resultPerPage).skip(skip);
     return this;
   }

@@ -25,7 +25,7 @@ export default function Home() {
       });
     }
 
-    dispatch(getProducts(null, currentPage));
+    dispatch(getProducts(currentPage));
   }, [dispatch, error, currentPage]);
   return (
     <Fragment>
