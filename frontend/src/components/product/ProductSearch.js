@@ -16,16 +16,30 @@ export default function ProductSearch() {
     (state) => state.productsState
   );
   const { keyword } = useParams(); // getting the keyword from the current url
-  const [price, setPrice] = useState([1,1000]);
-
+  const [price, setPrice] = useState([1, 1000]);
+const categories = [
+  "Electronics",
+  "Mobile Phones",
+  "Laptops",
+  "Accessories",
+  "Headphones",
+  "Foods",
+  "Books",
+  "Cloths/Shoes",
+  "Beauty/Health",
+  "Sports",
+  "Outdoor",
+  "Home",
+];
+const [category,setCategory] = useState(null);
   useEffect(() => {
     if (error) {
       return toast.error(error, { position: "bottom-center" });
     }
 
     // Fetch products without pagination
-    dispatch(getSearchedProducts(keyword,price));
-  }, [dispatch, error, keyword,price]);
+    dispatch(getSearchedProducts(keyword, price,category));
+  }, [dispatch, error, keyword, price,category]);
 
   return (
     <Fragment>
@@ -39,8 +53,10 @@ export default function ProductSearch() {
           <section id="products" className="container mt-5">
             <div className="row">
               <div className="col-6 col-md-3 mb-5 mt-5">
+                {/* Price Filter */}
+                <h3 className="mb-3">Price_Range</h3>
                 <div className="px-5">
-                  {/* range slider   */}
+                  {/* range slider */}
                   <Slider
                     range={true}
                     marks={{
@@ -50,7 +66,7 @@ export default function ProductSearch() {
                     min={1}
                     max={1000}
                     defaultValue={price}
-                    onChangeComplete={(price)=>{
+                    onChangeComplete={(price) => {
                       setPrice(price);
                     }}
                     handleRender={(renderProps) => {
@@ -63,6 +79,22 @@ export default function ProductSearch() {
                       );
                     }}
                   />
+                </div>
+                <hr className="my-5" />
+                {/* Category filter  */}
+                <div className="mt-5">
+                  <h3 className="mb-3">Categories</h3>
+                  <ul className="pl-0">
+                    {categories.map(category => 
+                    <li style={{ cursor: "pointer", listStyleType: "none" }}
+                    key = {category}
+                    onClick={()=>{setCategory(category)}}
+                    >
+                     {category}
+                    </li>
+
+                    )}
+                  </ul>
                 </div>
               </div>
               <div className="col-6 col-md-9">
