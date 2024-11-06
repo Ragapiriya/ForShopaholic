@@ -77,14 +77,14 @@ class APIfeatures {
     removeFields.forEach((field) => delete queryStrCopy[field]);
     // console.log(queryStrCopy); //after filtering
 
-    // let queryString = JSON.stringify(queryStrCopy);
-    // queryString = queryString.replace(
-    //   /\b(gt|gte|lt|lte)/g,
-    //   (match) => `$${match}`
-    // );
+    let queryString = JSON.stringify(queryStrCopy);
+    queryString = queryString.replace(
+      /\b(gt|gte|lt|lte)/g,
+      (match) => `$${match}`
+    );
     // console.log(queryString);
-    this.query.find(queryStrCopy);
-    // this.query.find(JSON.parse(queryString));
+    // this.query.find(queryStrCopy);
+    this.query.find(JSON.parse(queryString));
 
     return this;
   }

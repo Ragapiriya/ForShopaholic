@@ -41,7 +41,7 @@ export default function Home() {
             <div className="row">
               {products &&
                 products.map((product) => (
-                  <Product key={product._id} product={product} />
+                  <Product col={3} key={product._id} product={product} />
                 ))}
             </div>
           </section>
