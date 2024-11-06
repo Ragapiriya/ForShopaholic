@@ -17,7 +17,7 @@ export const getProducts = (currentPage) => async (dispatch) => {
     dispatch(productsFail(error.response.data.message));
   }
 };
-export const getSearchedProducts = (keyword, price,category) => async (dispatch) => {
+export const getSearchedProducts = (keyword, price,category,rating) => async (dispatch) => {
   try {
     dispatch(productsRequest()); //dispatch the action 'productRequest' from reducers
     let link = `/api/v1/products`;
@@ -27,12 +27,16 @@ export const getSearchedProducts = (keyword, price,category) => async (dispatch)
       link += `?keyword=${keyword}`;
     }
     if (price) {
-      //if keyword exists, cancatanation
+      //if price exists, cancatanation
       link += `&price[gte]=${price[0]}&price[lte]=${price[1]}`;
     }
     if (category) {
-      //if keyword exists, cancatanation
+      //if category exists, cancatanation
       link += `&category=${category}`;
+    }
+    if (rating) {
+      //if rating exists, cancatanation
+      link += `&ratings=${rating}`;
     }
     const { data } = await axios.get(link); //data = json data
     dispatch(productsSuccess(data)); //dispatch another action after api call

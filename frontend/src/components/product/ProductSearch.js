@@ -17,29 +17,30 @@ export default function ProductSearch() {
   );
   const { keyword } = useParams(); // getting the keyword from the current url
   const [price, setPrice] = useState([1, 1000]);
-const categories = [
-  "Electronics",
-  "Mobile Phones",
-  "Laptops",
-  "Accessories",
-  "Headphones",
-  "Foods",
-  "Books",
-  "Cloths/Shoes",
-  "Beauty/Health",
-  "Sports",
-  "Outdoor",
-  "Home",
-];
-const [category,setCategory] = useState(null);
+  const categories = [
+    "Electronics",
+    "Mobile Phones",
+    "Laptops",
+    "Accessories",
+    "Headphones",
+    "Foods",
+    "Books",
+    "Cloths/Shoes",
+    "Beauty/Health",
+    "Sports",
+    "Outdoor",
+    "Home",
+  ];
+  const [category, setCategory] = useState(null);
+  const [rating, setRating] = useState(0);
   useEffect(() => {
     if (error) {
       return toast.error(error, { position: "bottom-center" });
     }
 
     // Fetch products without pagination
-    dispatch(getSearchedProducts(keyword, price,category));
-  }, [dispatch, error, keyword, price,category]);
+    dispatch(getSearchedProducts(keyword, price, category, rating));
+  }, [dispatch, error, keyword, price, category, rating]);
 
   return (
     <Fragment>
@@ -85,15 +86,40 @@ const [category,setCategory] = useState(null);
                 <div className="mt-5">
                   <h3 className="mb-3">Categories</h3>
                   <ul className="pl-0">
-                    {categories.map(category => 
-                    <li style={{ cursor: "pointer", listStyleType: "none" }}
-                    key = {category}
-                    onClick={()=>{setCategory(category)}}
-                    >
-                     {category}
-                    </li>
-
-                    )}
+                    {categories.map((category) => (
+                      <li
+                        style={{ cursor: "pointer", listStyleType: "none" }}
+                        key={category}
+                        onClick={() => {
+                          setCategory(category);
+                        }}
+                      >
+                        {category}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <hr className="my-1" />
+                {/* rating filter  */}
+                <div className="mt-5">
+                  <h3 className="mb-3">Ratings</h3>
+                  <ul className="pl-0">
+                    {[5, 4, 3, 2, 1].map((star) => (
+                      <li
+                        style={{ cursor: "pointer", listStyleType: "none" }}
+                        key={star}
+                        onClick={() => {
+                          setRating(star);
+                        }}
+                      >
+                        <div className="rating-outer">
+                          <div
+                            className="rating-inner"
+                            style={{ width: `${star * 20}%` }}
+                          ></div>
+                        </div>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
