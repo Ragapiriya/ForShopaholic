@@ -40,6 +40,6 @@ const authSlice = createSlice({
 
 //Action creators for the types of actions that are handled by the slice reducer.
 const { actions, reducer } = authSlice;
-export const { loginRequest, logintSuccess, loginFail } = actions; //actions creators
+export const { loginRequest, loginSuccess, loginFail } = actions; //actions creators
 
 export default reducer;
