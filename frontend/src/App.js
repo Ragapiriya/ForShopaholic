@@ -11,7 +11,9 @@ import ProductSearch from "./components/product/ProductSearch";
 import Login from "./components/user/login";
 import Register from "./components/user/register";
 
+
 function App() {
+
   return (
     <Router>
       <div className="App">

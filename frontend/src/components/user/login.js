@@ -3,12 +3,13 @@ import { clearAuthError, login } from "../../actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import { Fragment, useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+
   const submitHandler = (event) => {
     event.preventDefault();
     dispatch(login(email, password));
@@ -77,11 +78,11 @@ export default function Login() {
               disabled={loading}
             >
               LOGIN
-            </button>
+            </button> 
 
-            <a href="#" className="float-right mt-3">
+            <Link to="/register" className="float-right mt-3">
               New User?
-            </a>
+            </Link>
           </form>
         </div>
       </div>
