@@ -8,7 +8,7 @@ const authSlice = createSlice({
     isAuthenticated: false,
   },
   reducers: {
-    //reducer functionality 1
+    //reducer functionality 1 -login
     loginRequest(state, action) {
       //previous state, action dispatched
       return {
@@ -17,7 +17,7 @@ const authSlice = createSlice({
         loading: true, //only updating the loading
       };
     },
-    //reducer functionality 2
+    //reducer functionality 2 -login
     loginSuccess(state, action) {
       //successful API request
       return {
@@ -26,7 +26,7 @@ const authSlice = createSlice({
         user: action.payload.user,
       };
     },
-    //reducer functionality 3
+    //reducer functionality 3 -login
     loginFail(state, action) {
       //Failed API request
       return {
@@ -35,7 +35,7 @@ const authSlice = createSlice({
         error: action.payload,
       };
     },
-    //reducer functionality 4
+    //reducer functionality 4 -login
     clearError(state, action) {
       //Failed API request
       return {
@@ -43,11 +43,46 @@ const authSlice = createSlice({
         error: null,
       };
     },
+    //reducer functionality 1 -register
+    registerRequest(state, action) {
+      //previous state, action dispatched
+      return {
+        //returning the state changes
+        ...state, //previouse state data
+        loading: true, //only updating the loading
+      };
+    },
+    //reducer functionality 2 -register
+    registerSuccess(state, action) {
+      //successful API request
+      return {
+        loading: false,
+        isAuthenticated: true,
+        user: action.payload.user,
+      };
+    },
+    //reducer functionality 3 -register
+    registerFail(state, action) {
+      //Failed API request
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    },
   },
 });
 
 //Action creators for the types of actions that are handled by the slice reducer.
 const { actions, reducer } = authSlice;
-export const { loginRequest, loginSuccess, loginFail, clearError } = actions; //actions creators
+export const {
+  loginRequest,
+  loginSuccess,
+  loginFail,
+  clearError,
+  registerRequest,
+  registerSuccess,
+  registerFail,
+} = actions; //actions creators
 
 export default reducer;
