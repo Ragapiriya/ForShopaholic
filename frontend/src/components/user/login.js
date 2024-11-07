@@ -1,16 +1,41 @@
-import { Fragment } from "react";
 import MetaData from "../layouts/MetaData";
-import { login } from "../../actions/userAction";
-import { useState, useDispatch } from "react";
+import { clearAuthError, login } from "../../actions/userAction";
+import { useDispatch, useSelector } from "react-redux";
+import { Fragment, useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const submitHandler = (event) => {
     event.preventDefault();
     dispatch(login(email, password));
   };
+  const navigate = useNavigate();
+
+  const { loading, error, isAuthenticated } = useSelector(
+    (state) => state.authState
+  );
+  useEffect(() => {
+    if (isAuthenticated) {
+      //successful login --> navigation to home page
+      navigate("/");
+    }
+    if (error) {
+      toast(error, {
+        position: "bottom-center",
+        type: "error",
+        //altering error state after showing the err msg
+        onOpen: () => {
+          dispatch(clearAuthError);
+        },
+      });
+      return;
+    }
+  }, [error, isAuthenticated, dispatch]);
+
   return (
     <Fragment>
       <MetaData title={"Login"} />
@@ -49,6 +74,7 @@ export default function Login() {
               id="login_button"
               type="submit"
               className="btn btn-block py-3"
+              disabled={loading}
             >
               LOGIN
             </button>

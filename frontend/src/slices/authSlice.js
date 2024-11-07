@@ -18,7 +18,7 @@ const authSlice = createSlice({
       };
     },
     //reducer functionality 2
-    logintSuccess(state, action) {
+    loginSuccess(state, action) {
       //successful API request
       return {
         loading: false,
@@ -35,11 +35,19 @@ const authSlice = createSlice({
         error: action.payload,
       };
     },
+    //reducer functionality 4
+    clearError(state, action) {
+      //Failed API request
+      return {
+        ...state,
+        error: null,
+      };
+    },
   },
 });
 
 //Action creators for the types of actions that are handled by the slice reducer.
 const { actions, reducer } = authSlice;
-export const { loginRequest, loginSuccess, loginFail } = actions; //actions creators
+export const { loginRequest, loginSuccess, loginFail, clearError } = actions; //actions creators
 
 export default reducer;
