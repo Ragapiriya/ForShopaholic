@@ -70,6 +70,51 @@ const authSlice = createSlice({
         error: action.payload,
       };
     },
+    //reducer functionality 1 -loading user details [user is already logined before.]
+    loadUserRequest(state, action) {
+      //previous state, action dispatched
+      return {
+        //returning the state changes
+        ...state, //previouse state data
+        isAuthenticated: false,
+        loading: true, //only updating the loading
+      };
+    },
+    //reducer functionality 2 -loading user details [user is already logined before.]
+    loadUserSuccess(state, action) {
+      //successful API request
+      return {
+        loading: false,
+        isAuthenticated: true,
+        user: action.payload.user,
+      };
+    },
+    //reducer functionality 3 -loading user details [user is already logined before.]
+    loadUserFail(state, action) {
+      //Failed API request
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    },
+    //reducer functionality 1 - logout action
+    logoutSuccess(state, action) {
+      //successful API request
+      return {
+        loading: false,
+        isAuthenticated: false,
+      };
+    },
+    //reducer functionality 2 -logout action
+    logoutFail(state, action) {
+      //Failed API request
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    },
   },
 });
 
@@ -83,6 +128,11 @@ export const {
   registerRequest,
   registerSuccess,
   registerFail,
+  loadUserRequest,
+  loadUserSuccess,
+  loadUserFail,
+  logoutSuccess,
+  logoutFail
 } = actions; //actions creators
 
 export default reducer;

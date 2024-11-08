@@ -7,6 +7,11 @@ import {
   registerRequest,
   registerSuccess,
   registerFail,
+  loadUserRequest,
+  loadUserSuccess,
+  loadUserFail,
+  logoutSuccess,
+  logoutFail,
 } from "../slices/authSlice";
 
 //action 1 -login action
@@ -41,3 +46,26 @@ export const register = (userData) => async (dispatch) => {
     dispatch(registerFail(error.response.data.message));
   }
 };
+
+//action 4 -load user details action
+export const loadUser = async (dispatch) => {
+  try {
+    dispatch(loadUserRequest());
+
+    const { data } = await axios.get(`/api/v1/myprofile`);
+    dispatch(loadUserSuccess(data));
+  } catch (error) {
+    dispatch(loadUserFail(error.response.data.message));
+  }
+};
+
+//action 5 -logout action
+export const logout = async (dispatch) => {
+  try {
+    await axios.get(`/api/v1/logout`);
+    dispatch(logoutSuccess());
+  } catch (error) {
+    dispatch(logoutFail(error.response.data.message));
+  }
+};
+

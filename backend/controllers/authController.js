@@ -14,7 +14,7 @@ exports.registerUser = catchAsyncError(async (req, res, next) => {
   if (req.file) {
     //if user uploads a img file.
     //img url is assigned to avatar field
-    avatar = `${req.protocol}://${req.hostname}/uploads/user/${req.file.originalname}`;
+    avatar = `${process.env.BACKEND_URL}/uploads/user/${req.file.originalname}`;
   }
   const user = await userModel.create({
     name,

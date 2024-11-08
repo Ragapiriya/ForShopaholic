@@ -10,10 +10,15 @@ import ProductDetail from "./components/product/ProductDetail";
 import ProductSearch from "./components/product/ProductSearch";
 import Login from "./components/user/login";
 import Register from "./components/user/register";
-
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { loadUser } from "./actions/userAction";
 
 function App() {
-
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(loadUser);
+  },[dispatch]);
   return (
     <Router>
       <div className="App">
