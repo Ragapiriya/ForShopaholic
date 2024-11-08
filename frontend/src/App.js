@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { loadUser } from "./actions/userAction";
 import Profile from "./components/user/Profile";
 import ProtectedRoute from "./components/route/ProtectedRoute";
+import UpdateProfile from "./components/user/UpdateProfile";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Profile />{" "}
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/myprofile/update"
+                element={
+                  <ProtectedRoute>
+                    <UpdateProfile />{" "}
                   </ProtectedRoute>
                 }
               />

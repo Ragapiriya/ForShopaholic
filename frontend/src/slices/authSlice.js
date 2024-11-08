@@ -115,6 +115,34 @@ const authSlice = createSlice({
         error: action.payload,
       };
     },
+    //reducer functionality 1 -register
+    updateProfileRequest(state, action) {
+      //previous state, action dispatched
+      return {
+        //returning the state changes
+        ...state, //previouse state data
+        loading: true, //only updating the loading
+        isUpdated: false,
+      };
+    },
+    //reducer functionality 2 -register
+    updateProfileSuccess(state, action) {
+      //successful API request
+      return {
+        loading: false,
+        user: action.payload.user,
+        isUpdated: true,
+      };
+    },
+    //reducer functionality 3 -register
+    updateProfileFail(state, action) {
+      //Failed API request
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    },
   },
 });
 
@@ -132,7 +160,10 @@ export const {
   loadUserSuccess,
   loadUserFail,
   logoutSuccess,
-  logoutFail
+  logoutFail,
+  updateProfileRequest,
+  updateProfileSuccess,
+  updateProfileFail,
 } = actions; //actions creators
 
 export default reducer;

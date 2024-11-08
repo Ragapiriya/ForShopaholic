@@ -12,6 +12,9 @@ import {
   loadUserFail,
   logoutSuccess,
   logoutFail,
+  updateProfileRequest,
+  updateProfileSuccess,
+  updateProfileFail,
 } from "../slices/authSlice";
 
 //action 1 -login action
@@ -69,3 +72,19 @@ export const logout = async (dispatch) => {
   }
 };
 
+//action 6 -update profile action
+export const updateProfile = (userData) => async (dispatch) => {
+  try {
+    dispatch(updateProfileRequest());
+    const config = {
+      headers: {
+        //userData contains different types of data [img], so --> changing the content-type
+        "Content-type": "multipart/form-data",
+      },
+    };
+    const { data } = await axios.put(`/api/v1/update`, userData, config);
+    dispatch(updateProfileSuccess(data));
+  } catch (error) {
+    dispatch(updateProfileFail(error.response.data.message));
+  }
+};
