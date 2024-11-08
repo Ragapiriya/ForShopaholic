@@ -22,6 +22,7 @@ export default function Register() {
   const dispatch = useDispatch();
   const onChange = (event) => {
     if (event.target.name === "avatar") {
+      //avatar input
       //reading file data [img]
       const reader = new FileReader(); //file reader obj to get the url of file data
       reader.onload = () => {
@@ -31,9 +32,11 @@ export default function Register() {
           setAvatar(event.target.files[0]);
         }
       };
-      reader.readAsDataURL(event.target.files[0]);
+      reader.readAsDataURL(event.target.files[0]); //alter the file data into url
+    } else {
+      //text data input
+      setUserData({ ...userData, [event.target.name]: event.target.value });
     }
-    setUserData({ ...userData, [event.target.name]: event.target.value });
   };
 
   const submitHandler = (event) => {
@@ -49,7 +52,7 @@ export default function Register() {
     if (isAuthenticated) {
       //successful registration --> navigation to home page
       navigate("/");
-      return 
+      return;
     }
     if (error) {
       toast(error, {
@@ -82,7 +85,6 @@ export default function Register() {
               type="name"
               id="name_field"
               className="form-control"
-              
             />
           </div>
 
@@ -94,7 +96,6 @@ export default function Register() {
               type="email"
               id="email_field"
               className="form-control"
-              
             />
           </div>
 
@@ -106,7 +107,6 @@ export default function Register() {
               type="password"
               id="password_field"
               className="form-control"
-             
             />
           </div>
 

@@ -22,7 +22,7 @@ const userSchema = mongoose.Schema({
     select: false, //only accessible when using select() function
   },
   avatar: {
-    type: String, //img file name
+    type: String, //img file url
   },
   role: {
     type: String,

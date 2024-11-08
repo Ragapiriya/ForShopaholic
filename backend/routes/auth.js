@@ -3,11 +3,14 @@ const router = expressModule.Router();
 const multer = require("multer");
 const path = require("path");
 
+//middleware
 const upload = multer({
   storage: multer.diskStorage({
+    //in which folder we're going to upload the file
     destination: function (req, file, cb) {
       cb(null, path.join(__dirname, "..", "uploads/user"));
     },
+    //name of the file == original name of the file
     filename: function (req, file, cb) {
       cb(null, file.originalname);
     },
@@ -17,7 +20,7 @@ const {
   registerUser,
   loginUser,
   logoutUser,
-  forgotPassword, 
+  forgotPassword,
   resetPassword,
   getUserProfile,
   changePassword,

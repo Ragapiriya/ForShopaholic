@@ -10,6 +10,7 @@ const path = require("path");
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
+//to make the "uploads" folder a static folder to save the user imgs
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use("/api/v1/", products); //1st URL, 2nd Route
