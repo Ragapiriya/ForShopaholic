@@ -13,12 +13,14 @@ import Register from "./components/user/register";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loadUser } from "./actions/userAction";
+import Profile from "./components/user/Profile";
+import ProtectedRoute from "./components/route/ProtectedRoute";
 
 function App() {
   const dispatch = useDispatch();
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(loadUser);
-  },[dispatch]);
+  }, [dispatch]);
   return (
     <Router>
       <div className="App">
@@ -32,6 +34,14 @@ function App() {
               <Route path="/search/:keyword" element={<ProductSearch />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route
+                path="/myprofile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />{" "}
+                  </ProtectedRoute>
+                }
+              />
             </Routes>
           </div>
           <Footer />
