@@ -17,7 +17,7 @@ export default function Home() {
   const setCurrentPageNo = (pageNo) => {
     setCurrentPage(pageNo);
   };
-  console.log(currentPage);
+  // console.log(currentPage);
   useEffect(() => {
     if (error) {
       return toast.error(error, {

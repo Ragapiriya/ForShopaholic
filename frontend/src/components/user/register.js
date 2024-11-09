@@ -73,7 +73,7 @@ export default function Register() {
         <form
           onSubmit={submitHandler}
           className="shadow-lg"
-          enctype="multipart/form-data"
+          encType="multipart/form-data"
         >
           <h1 className="mb-3">Register</h1>
 

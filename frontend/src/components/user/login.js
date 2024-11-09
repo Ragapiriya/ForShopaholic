@@ -43,7 +43,7 @@ export default function Login() {
 
       <div className="row wrapper">
         <div className="col-10 col-lg-5">
-          <form lassName="shadow-lg" onSubmit={submitHandler}>
+          <form className="shadow-lg" onSubmit={submitHandler}>
             <h1 className="mb-3">Login</h1>
             <div className="form-group">
               <label htmlFor="email_field">Email</label>
