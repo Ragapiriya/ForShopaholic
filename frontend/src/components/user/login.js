@@ -67,9 +67,9 @@ export default function Login() {
               />
             </div>
 
-            <a href="#" className="float-right mb-4">
+            <Link to="/password/forgot" className="float-right mb-4">
               Forgot Password?
-            </a>
+            </Link>
 
             <button
               id="login_button"
@@ -78,7 +78,7 @@ export default function Login() {
               disabled={loading}
             >
               LOGIN
-            </button> 
+            </button>
 
             <Link to="/register" className="float-right mt-3">
               New User?

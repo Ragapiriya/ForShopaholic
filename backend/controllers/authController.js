@@ -83,15 +83,13 @@ exports.forgotPassword = catchAsyncError(async (req, res, next) => {
   await user.save({ validateBeforeSave: false }); //update user document
 
   //create reset url for backend api [ not for frontend]
-  const resetUrl = `${req.protocol}://${req.get(
-    "host"
-  )}/api/v1/password/reset/${resetToken}`; //= http://127.0.0.1/api/v1/password/token/{token}
+  const resetUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`; //= http://127.0.0.1/api/v1/password/token/{token}
 
   //message content for email
   const message = `Your password reset url is as follows \n\n ${resetUrl} \n\n If you have not requested this email, then ignore it.`;
 
   //sending email
-  try {
+  try { 
     sendEmail({
       email: user.email,
       subject: "ForShopaholic password resetting",

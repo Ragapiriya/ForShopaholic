@@ -172,6 +172,62 @@ const authSlice = createSlice({
         error: action.payload,
       };
     },
+    //reducer functionality 1 -forgot password
+    forgotPasswordRequest(state, action) {
+      //previous state, action dispatched
+      return {
+        //returning the state changes
+        ...state, //previouse state data
+        loading: true, //only updating the loading
+        message: null,
+      };
+    },
+    //reducer functionality 2 -forgot password
+    forgotPasswordSuccess(state, action) {
+      //successful API request
+      return {
+        ...state,
+        loading: false,
+        message: action.payload.message,
+      };
+    },
+    //reducer functionality 3 -forgot password
+    forgotPasswordFail(state, action) {
+      //Failed API request
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    },
+    //reducer functionality 1 -reset password
+    resetPasswordRequest(state, action) {
+      //previous state, action dispatched
+      return {
+        //returning the state changes
+        ...state, //previouse state data
+        loading: true, //only updating the loading
+      };
+    },
+    //reducer functionality 2 -reset password
+    resetPasswordSuccess(state, action) {
+      //successful API request
+      return {
+        ...state,
+        loading: false,
+        isAuthenticated: true, //successful reset password
+        user: action.payload.user,
+      };
+    },
+    //reducer functionality 3 -reset password
+    resetPasswordFail(state, action) {
+      //Failed API request
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    },
   },
 });
 
@@ -195,7 +251,13 @@ export const {
   updateProfileFail,
   updatePasswordRequest,
   updatePasswordSuccess,
-  updatePasswordFail
+  updatePasswordFail,
+  forgotPasswordRequest,
+  forgotPasswordSuccess,
+  forgotPasswordFail,
+  resetPasswordRequest,
+  resetPasswordSuccess,
+  resetPasswordFail,
 } = actions; //actions creators
 
 export default reducer;

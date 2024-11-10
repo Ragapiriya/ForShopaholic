@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import {
   clearAuthError,
-  updatePassword as updatePasswordAction,
+  updatePassword as updatePasswordAction, 
 } from "../../actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
