@@ -129,6 +129,7 @@ const authSlice = createSlice({
     updateProfileSuccess(state, action) {
       //successful API request
       return {
+        ...state,
         loading: false,
         user: action.payload.user,
         isUpdated: true,
@@ -136,6 +137,34 @@ const authSlice = createSlice({
     },
     //reducer functionality 3 -register
     updateProfileFail(state, action) {
+      //Failed API request
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    },
+    //reducer functionality 1 -update password
+    updatePasswordRequest(state, action) {
+      //previous state, action dispatched
+      return {
+        //returning the state changes
+        ...state, //previouse state data
+        loading: true, //only updating the loading
+        isUpdated: false,
+      };
+    },
+    //reducer functionality 2 -update password
+    updatePasswordSuccess(state, action) {
+      //successful API request
+      return {
+        ...state,
+        loading: false,
+        isUpdated: true,
+      };
+    },
+    //reducer functionality 3 -update password
+    updatePasswordFail(state, action) {
       //Failed API request
       return {
         ...state,
@@ -164,6 +193,9 @@ export const {
   updateProfileRequest,
   updateProfileSuccess,
   updateProfileFail,
+  updatePasswordRequest,
+  updatePasswordSuccess,
+  updatePasswordFail
 } = actions; //actions creators
 
 export default reducer;

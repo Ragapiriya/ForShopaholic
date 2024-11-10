@@ -46,9 +46,9 @@ export default function UpdateProfile() {
     if (isUpdated) {
       //successful update
       toast.success("Profile updated successfully", {
-        position: "top-center",
+        position: "bottom-center",
       });
-      console.log("Updat4ed")
+      console.log("Updat4ed");
       return;
     }
 

@@ -15,6 +15,9 @@ import {
   updateProfileRequest,
   updateProfileSuccess,
   updateProfileFail,
+  updatePasswordRequest,
+  updatePasswordSuccess,
+  updatePasswordFail,
 } from "../slices/authSlice";
 
 //action 1 -login action
@@ -86,5 +89,21 @@ export const updateProfile = (userData) => async (dispatch) => {
     dispatch(updateProfileSuccess(data));
   } catch (error) {
     dispatch(updateProfileFail(error.response.data.message));
+  }
+};
+//action 7 -update password action
+export const updatePassword = (formData) => async (dispatch) => {
+  try {
+    dispatch(updatePasswordRequest());
+    const config = {
+      headers: {
+        //userData contains different types of data [img], so --> changing the content-type
+        "Content-type": "application/json",
+      },
+    };
+    await axios.put(`/api/v1/password/change`, formData, config);
+    dispatch(updatePasswordSuccess());
+  } catch (error) {
+    dispatch(updatePasswordFail(error.response.data.message));
   }
 };
