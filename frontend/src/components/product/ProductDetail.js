@@ -6,32 +6,59 @@ import Loader from "../layouts/Loader";
 import { Carousel } from "react-bootstrap";
 import MetaData from "../layouts/MetaData";
 
-
 export default function ProductDetail() {
   const { product, loading } = useSelector((state) => state.productState);
   const dispatch = useDispatch();
   const { id } = useParams(); //getting parameters in URL
   useEffect(() => {
     dispatch(getProduct(id));
-  }, [dispatch,id]);
+  }, [dispatch, id]);
   return (
     <Fragment>
       {loading ? (
         <Loader />
       ) : (
         <Fragment>
-      <MetaData title={product.name}/>
+          <MetaData title={product.name} />
 
           <div className="row f-flex justify-content-around">
             <div className="col-12 col-lg-5 img-fluid" id="product_image">
-              <Carousel pause="hover">
+              <Carousel
+                pause="hover"
+                nextIcon={
+                  product.images && product.images.length > 1 ? (
+                    <span
+                      aria-hidden="true"
+                      className="carousel-control-next-icon"
+                      style={{
+                        backgroundColor: "#845ec2",
+                        borderRadius: "50%",
+                        padding: "10px",
+                      }}
+                    />
+                  ) : null
+                }
+                prevIcon={
+                  product.images && product.images.length > 1 ? (
+                    <span
+                      aria-hidden="true"
+                      className="carousel-control-prev-icon"
+                      style={{
+                        backgroundColor: "#845ec2",
+                        borderRadius: "50%",
+                        padding: "10px",
+                      }}
+                    />
+                  ) : null
+                }
+              >
                 {product.images &&
                   product.images.map((image) => (
                     <Carousel.Item key={image._id}>
                       <img
                         className="d-block w-100"
                         src={image.image}
-                        alt="product.name"
+                        alt={product.name}
                         height="500"
                         width="500"
                       />
@@ -41,7 +68,7 @@ export default function ProductDetail() {
             </div>
 
             <div className="col-12 col-lg-5 mt-5">
-              <h3>{product.name}</h3>
+              <h3 className="title">{product.name}</h3>
               <p id="product_id">Product # {product._id}</p>
 
               <hr />
@@ -60,7 +87,7 @@ export default function ProductDetail() {
 
               <p id="product_price">{product.price}</p>
               <div className="stockCounter d-inline">
-                <span className="btn btn-danger minus">-</span>
+                <span className="btn minus">-</span>
 
                 <input
                   type="number"
@@ -69,7 +96,7 @@ export default function ProductDetail() {
                   readOnly
                 />
 
-                <span className="btn btn-primary plus">+</span>
+                <span className="btn plus">+</span>
               </div>
               <button
                 type="button"
