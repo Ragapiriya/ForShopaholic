@@ -36,7 +36,7 @@ export default function ResetPassword() {
       });
       return;
     }
-  }, [dispatch, isAuthenticated, error]);
+  }, [dispatch, isAuthenticated, navigate, error]);
   return (
     <div className="row wrapper">
       <div className="col-10 col-lg-5">

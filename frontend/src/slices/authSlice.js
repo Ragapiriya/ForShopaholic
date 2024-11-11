@@ -4,7 +4,7 @@ const authSlice = createSlice({
   name: "auth",
   initialState: {
     //before refresh the page
-    loading: false,
+    loading: true,
     isAuthenticated: false,
   },
   reducers: {
@@ -95,7 +95,6 @@ const authSlice = createSlice({
       return {
         ...state,
         loading: false,
-        error: action.payload,
       };
     },
     //reducer functionality 1 - logout action
@@ -142,6 +141,14 @@ const authSlice = createSlice({
         ...state,
         loading: false,
         error: action.payload,
+      };
+    },
+    //reducer functionality  -
+    clearUpdateProfile(state, action) {
+      //clearing update state
+      return {
+        ...state,
+        isUpdated:false,
       };
     },
     //reducer functionality 1 -update password
@@ -249,6 +256,7 @@ export const {
   updateProfileRequest,
   updateProfileSuccess,
   updateProfileFail,
+  clearUpdateProfile,
   updatePasswordRequest,
   updatePasswordSuccess,
   updatePasswordFail,
