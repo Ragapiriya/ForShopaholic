@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   decreaseCartItemQuantity,
   increaseCartItemQuantity,
@@ -9,6 +9,7 @@ import {
 
 export default function Cart() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { items } = useSelector((state) => state.cartState);
   const increaseQty = (item) => {
     const count = item.quantity;
@@ -20,10 +21,15 @@ export default function Cart() {
     if (count == 1) return;
     dispatch(decreaseCartItemQuantity(item.product));
   };
+  const checkoutHandler = () => {
+    navigate("/login?redirect=shipping");
+  };
   return (
     <Fragment>
       {items.length === 0 ? (
-        <h2 id="products_heading" className="mt-5">Your Cart is Empty</h2>
+        <h2 id="products_heading" className="mt-5">
+          Your Cart is Empty
+        </h2>
       ) : (
         <Fragment>
           <h2 id="products_heading" className="mt-5">
@@ -100,15 +106,28 @@ export default function Cart() {
                 <hr />
                 <p>
                   Total quantity:{" "}
-                  <span className="order-summary-values">{items.reduce((acc,item)=>(acc + item.quantity),0)} (Units)</span>
+                  <span className="order-summary-values">
+                    {items.reduce((acc, item) => acc + item.quantity, 0)}{" "}
+                    (Units)
+                  </span>
                 </p>
                 <p>
                   Est. total:{" "}
-                  <span className="order-summary-values">${items.reduce((acc,item)=>(acc + item.quantity * item.price),0)}</span>
+                  <span className="order-summary-values">
+                    $
+                    {items.reduce(
+                      (acc, item) => acc + item.quantity * item.price,
+                      0
+                    )}
+                  </span>
                 </p>
 
                 <hr />
-                <button id="checkout_btn" className="btn  btn-block">
+                <button
+                  id="checkout_btn"
+                  className="btn  btn-block"
+                  onClick={checkoutHandler}
+                >
                   Check out
                 </button>
               </div>

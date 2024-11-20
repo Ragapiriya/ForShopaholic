@@ -10,6 +10,9 @@ const cartSlice = createSlice({
       ? JSON.parse(localStorage.getItem("cartItems")) //cart items available
       : [], //no items - empty array
     loading: false,
+    shippingInfo: localStorage.getItem("shippingInfo")
+      ? JSON.parse(localStorage.getItem("shippingInfo"))
+      : {}, //empty obj
   },
   reducers: {
     //reducer functionality 1 - add to cart
@@ -84,6 +87,14 @@ const cartSlice = createSlice({
         items: filterItems,
       };
     },
+    //reducer functionality -saving shipping info
+    saveShippingInfo(state, action) {
+      localStorage.setItem("shippingInfo", JSON.stringify(action.payload));
+      return {
+        ...state,
+        shippingInfo: action.payload,
+      };
+    },
   },
 });
 
@@ -95,7 +106,8 @@ export const {
   cartLoadFail,
   increaseCartItemQuantity,
   decreaseCartItemQuantity,
-  removeItemFromCart
+  removeItemFromCart,
+  saveShippingInfo,
 } = actions; //actions creators
 
 export default reducer;

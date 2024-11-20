@@ -3,26 +3,27 @@ import { clearAuthError, login } from "../../actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import { Fragment, useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { loading, error, isAuthenticated } = useSelector(
+    (state) => state.authState
+  );
+  const redirect = location.search ? "/" + location.search.split("=")[1] : "/";
   const submitHandler = (event) => {
     event.preventDefault();
     dispatch(login(email, password));
   };
-  const navigate = useNavigate();
 
-  const { loading, error, isAuthenticated } = useSelector(
-    (state) => state.authState
-  );
   useEffect(() => {
     if (isAuthenticated) {
       //successful login --> navigation to home page
-      navigate("/");
+      navigate(redirect);
     }
     if (error) {
       toast(error, {
