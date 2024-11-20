@@ -8,6 +8,7 @@ export default function Header() {
   const { isAuthenticated, user } = useSelector((state) => {
     return state.authState;
   });
+  const { items: cartItems } = useSelector((state) => state.cartState);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const logoutHandler = () => {
@@ -18,7 +19,12 @@ export default function Header() {
       <div className="col-12 col-md-3">
         <div className="navbar-brand">
           <Link to="/">
-            <img width="150px" alt="ForShopaholic" src="/images/logo1.png" className="logo-image" />
+            <img
+              width="150px"
+              alt="ForShopaholic"
+              src="/images/logo1.png"
+              className="logo-image"
+            />
           </Link>
         </div>
       </div>
@@ -41,7 +47,12 @@ export default function Header() {
               <span>{user.name}</span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item onClick={()=>{navigate('/myprofile')}} className="text-dark">
+              <Dropdown.Item
+                onClick={() => {
+                  navigate("/myprofile");
+                }}
+                className="text-dark"
+              >
                 Profile
               </Dropdown.Item>
               <Dropdown.Item onClick={logoutHandler} className="text-danger">
@@ -54,12 +65,13 @@ export default function Header() {
             Login
           </Link>
         )}
-
-        <span id="cart" className="ml-3">
-          Cart
-        </span>
+        <Link to="/cart">
+          <span id="cart" className="ml-3">
+            Cart
+          </span>
+        </Link>
         <span className="ml-1" id="cart_count">
-          2
+          {cartItems.length}
         </span>
       </div>
     </nav>
