@@ -23,10 +23,10 @@ export default function Cart() {
   return (
     <Fragment>
       {items.length === 0 ? (
-        <h2 className="mt-5">Your Cart is Empty</h2>
+        <h2 id="products_heading" className="mt-5">Your Cart is Empty</h2>
       ) : (
         <Fragment>
-          <h2 className="mt-5">
+          <h2 id="products_heading" className="mt-5">
             Your Cart: <b>{items.length} items</b>
           </h2>
 
@@ -99,12 +99,12 @@ export default function Cart() {
                 <h4>Order Summary</h4>
                 <hr />
                 <p>
-                  Subtotal:{" "}
-                  <span className="order-summary-values">1 (Units)</span>
+                  Total quantity:{" "}
+                  <span className="order-summary-values">{items.reduce((acc,item)=>(acc + item.quantity),0)} (Units)</span>
                 </p>
                 <p>
                   Est. total:{" "}
-                  <span className="order-summary-values">$245.67</span>
+                  <span className="order-summary-values">${items.reduce((acc,item)=>(acc + item.quantity * item.price),0)}</span>
                 </p>
 
                 <hr />
