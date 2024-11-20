@@ -1,8 +1,25 @@
 import { Fragment } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import {
+  decreaseCartItemQuantity,
+  increaseCartItemQuantity,
+  removeItemFromCart,
+} from "../../slices/cartSlice";
+
 export default function Cart() {
+  const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cartState);
+  const increaseQty = (item) => {
+    const count = item.quantity;
+    if (item.stock == 0 || count >= item.stock) return;
+    dispatch(increaseCartItemQuantity(item.product));
+  };
+  const decreaseQty = (item) => {
+    const count = item.quantity;
+    if (count == 1) return;
+    dispatch(decreaseCartItemQuantity(item.product));
+  };
   return (
     <Fragment>
       {items.length === 0 ? (
@@ -39,22 +56,35 @@ export default function Cart() {
 
                       <div className="col-4 col-lg-3 mt-4 mt-lg-0">
                         <div className="stockCounter d-inline">
-                          <span className="btn minus">-</span>
+                          <span
+                            className="btn minus"
+                            onClick={() => decreaseQty(item)}
+                          >
+                            -
+                          </span>
                           <input
                             type="number"
                             className="form-control count d-inline"
-                            value="1"
+                            value={item.quantity}
                             readOnly
                           />
 
-                          <span className="btn plus">+</span>
+                          <span
+                            className="btn plus"
+                            onClick={() => increaseQty(item)}
+                          >
+                            +
+                          </span>
                         </div>
                       </div>
 
                       <div className="col-4 col-lg-1 mt-4 mt-lg-0">
                         <i
                           id="delete_cart_item"
-                          className="fa fa-trash btn btn-danger"
+                          className="fa fa-trash btn "
+                          onClick={() =>
+                            dispatch(removeItemFromCart(item.product))
+                          }
                         ></i>
                       </div>
                     </div>

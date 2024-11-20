@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { act } from "react";
 
 const cartSlice = createSlice({
   name: "cart",
@@ -41,6 +42,7 @@ const cartSlice = createSlice({
       }
       return state;
     },
+    //reducer functionality 3
     cartLoadFail(state, action) {
       //Failed API request
       return {
@@ -48,11 +50,52 @@ const cartSlice = createSlice({
         loading: false,
       };
     },
+    //reducer functionality 1 - increase quantity
+    increaseCartItemQuantity(state, action) {
+      state.items = state.items.map((item) => {
+        if (item.product === action.payload) {
+          //if the item from cart items list is same as the item we intended to change
+          item.quantity = item.quantity + 1;
+        }
+        return item;
+      });
+      localStorage.setItem("cartItems", JSON.stringify(state.items));
+    },
+    //reducer functionality 2 - decrease quantity
+    decreaseCartItemQuantity(state, action) {
+      state.items = state.items.map((item) => {
+        if (item.product === action.payload) {
+          //if the item from cart items list is same as the item we intended to change
+          item.quantity = item.quantity - 1;
+        }
+        return item;
+      });
+      localStorage.setItem("cartItems", JSON.stringify(state.items));
+    },
+    //
+    removeItemFromCart(state, action) {
+      const filterItems = state.items.filter((item) => {
+        return item.product !== action.payload;
+      });
+      localStorage.setItem("cartItems", JSON.stringify(filterItems));
+
+      return {
+        ...state,
+        items: filterItems,
+      };
+    },
   },
 });
 
 //Action creators for the types of actions that are handled by the slice reducer.
 const { actions, reducer } = cartSlice;
-export const { addCartItemRequest, addCartItemSuccess, cartLoadFail } = actions; //actions creators
+export const {
+  addCartItemRequest,
+  addCartItemSuccess,
+  cartLoadFail,
+  increaseCartItemQuantity,
+  decreaseCartItemQuantity,
+  removeItemFromCart
+} = actions; //actions creators
 
 export default reducer;
