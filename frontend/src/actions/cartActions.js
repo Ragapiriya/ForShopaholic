@@ -1,11 +1,15 @@
-import { addCartItemRequest, addCartItemRSuccess } from "../slices/cartSlice";
-import axios from 'axios';
+import {
+  addCartItemRequest,
+  addCartItemSuccess,
+  cartLoadFail,
+} from "../slices/cartSlice";
+import axios from "axios";
 export const addCartItem = (id, quantity) => async (dispatch) => {
   try {
     dispatch(addCartItemRequest());
     const { data } = await axios.get(`/api/v1/product/${id}`);
     dispatch(
-      addCartItemRSuccess({
+      addCartItemSuccess({
         product: data.product._id,
         name: data.product.name,
         price: data.product.price,
@@ -15,6 +19,6 @@ export const addCartItem = (id, quantity) => async (dispatch) => {
       })
     );
   } catch (error) {
-
+    dispatch(cartLoadFail());
   }
 };

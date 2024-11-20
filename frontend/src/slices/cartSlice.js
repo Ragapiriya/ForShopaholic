@@ -4,9 +4,10 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: {
     //before refresh the page
+    //getting the existing cart items
     items: localStorage.getItem("cartItems")
-      ? JSON.parse(localStorage.getItem("cartItems"))
-      : [],
+      ? JSON.parse(localStorage.getItem("cartItems")) //cart items available
+      : [], //no items - empty array
     loading: false,
   },
   reducers: {
@@ -19,7 +20,7 @@ const cartSlice = createSlice({
       };
     },
     //reducer functionality 2
-    addCartItemRSuccess(state, action) {
+    addCartItemSuccess(state, action) {
       //successful API request
 
       const item = action.payload; //item we're adding to cart
@@ -33,18 +34,25 @@ const cartSlice = createSlice({
       } else {
         //item is new to the cart
         state = {
-          items: [...state.item, item],
+          items: [...state.items, item],
           loading: false,
         };
         localStorage.setItem("cartItems", JSON.stringify(state.items));
       }
       return state;
     },
+    cartLoadFail(state, action) {
+      //Failed API request
+      return {
+        ...state,
+        loading: false,
+      };
+    },
   },
 });
 
 //Action creators for the types of actions that are handled by the slice reducer.
 const { actions, reducer } = cartSlice;
-export const { addCartItemRSuccess, addCartItemRequest } = actions; //actions creators
+export const { addCartItemRequest, addCartItemSuccess, cartLoadFail } = actions; //actions creators
 
 export default reducer;
