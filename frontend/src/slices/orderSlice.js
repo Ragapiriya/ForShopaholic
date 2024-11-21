@@ -21,7 +21,7 @@ const orderSlice = createSlice({
         //returning the state changes
         ...state,
         loading: false,
-        orderDetails: action.payload,
+        orderDetails: action.payload.order,
       };
     },
     createOrderFail(state, action) {

@@ -77,9 +77,17 @@ const orderSchema = mongoose.Schema({
     required: true,
     default: 0.0,
   },
-  paidAt: {
-    type: Date,
-  },
+
+  paymentInfo: {
+    id: {
+        type: String,
+        required: true
+    },
+    status: {
+        type: String,
+        required: true
+    }
+},
   deliveredAt: {
     type: Date,
   },

@@ -92,7 +92,7 @@ export default function Shipping() {
             </div>
 
             <div className="form-group">
-              <label htmlhtmlFor="phone_field">Phone No</label>
+              <label htmlFor="phone_field">Phone No</label>
               <input
                 type="phone"
                 id="phone_field"

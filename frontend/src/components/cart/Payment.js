@@ -61,7 +61,7 @@ export default function Payment() {
       });
       return;
     }
-  });
+  },[]);
   // const submitHandler = async (e) => {
   //   e.preventDefault();
   //   document.querySelector("#pay_btn").disabled = true;
