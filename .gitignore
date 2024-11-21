@@ -20,7 +20,7 @@ pids/
 node_modules/
 
 # Environment files
-config/config.env
+backend/config/config.env
 
 # Database files
 *.sqlite
