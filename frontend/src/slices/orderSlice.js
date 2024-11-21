@@ -32,11 +32,35 @@ const orderSlice = createSlice({
         error: action.payload,
       };
     },
+    //reducer functionality 1 -orders of a user
+    userOrderRequest(state, action) {
+      return {
+        //returning the state changes
+        ...state,
+        loading: true,
+      };
+    },
+    userOrderSuccess(state, action) {
+      return {
+        //returning the state changes
+        ...state,
+        loading: false,
+        userOrders: action.payload.orders,
+      };
+    },
+    userOrderFail(state, action) {
+      return {
+        //returning the state changes
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    },
     clearError(state, action) {
       return {
         //returning the state changes
         ...state,
-        error: null
+        error: null,
       };
     },
   },
@@ -44,7 +68,14 @@ const orderSlice = createSlice({
 
 //Action creators for the types of actions that are handled by the slice reducer.
 const { actions, reducer } = orderSlice;
-export const { createOrderRequest, createOrderSuccess, createOrderFail,clearError } =
-  actions; //actions creators
+export const {
+  createOrderRequest,
+  createOrderSuccess,
+  createOrderFail,
+  userOrderRequest,
+  userOrderSuccess,
+  userOrderFail,
+  clearError,
+} = actions; //actions creators
 
 export default reducer;
