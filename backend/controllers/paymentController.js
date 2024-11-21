@@ -20,6 +20,6 @@ exports.proccessPayment = catchAsyncError(async (req, res, next) => {
 //request handler
 exports.sendStripeApi = catchAsyncError(async (req, res, next) => {
   res.status(200).json({
-    strikeApiKey:process.env.STRIPE_API_KEY,
+    stripeApiKey:process.env.STRIPE_API_KEY,
   });
 });

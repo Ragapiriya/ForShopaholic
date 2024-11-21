@@ -9,8 +9,8 @@ import "react-toastify/dist/ReactToastify.css";
 import ProductDetail from "./components/product/ProductDetail";
 import ProductSearch from "./components/product/ProductSearch";
 import Login from "./components/user/login";
-import Register from "./components/user/register"; 
-import { useEffect } from "react";
+import Register from "./components/user/register";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { loadUser } from "./actions/userAction";
 import Profile from "./components/user/Profile";
@@ -22,11 +22,21 @@ import ResetPassword from "./components/user/ResetPassword";
 import Cart from "./components/cart/Cart";
 import Shipping from "./components/cart/Shipping";
 import ConfirmOrder from "./components/cart/ConfirmOrder";
+import Payment from "./components/cart/Payment";
+import axios from "axios";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 function App() {
   const dispatch = useDispatch();
+  const [stripeApiKey, setstripeApiKey] = useState("");
   useEffect(() => {
     dispatch(loadUser);
+    async function getStripeApiKey() {
+      const { data } = await axios.get("/api/v1/stripeapi");
+      setstripeApiKey(data.stripeApiKey);
+    }
+    getStripeApiKey();
   }, [dispatch]);
   return (
     <Router>
@@ -87,6 +97,18 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              {stripeApiKey && (
+                <Route
+                  path="/payment"
+                  element={
+                    <ProtectedRoute>
+                      <Elements stripe={loadStripe(stripeApiKey)}>
+                        <Payment />
+                      </Elements>
+                    </ProtectedRoute>
+                  }
+                />
+              )}
             </Routes>
           </div>
           <Footer />

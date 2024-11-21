@@ -25,7 +25,7 @@ export const validateShipping = (shippingInfo, navigate) => {
 };
 
 export default function Shipping() {
-  const { shippingInfo } = useSelector((state) => state.cartState);
+  const { shippingInfo={} } = useSelector((state) => state.cartState);
   const [address, setAddress] = useState(shippingInfo.address);
   const [city, setCity] = useState(shippingInfo.city);
   const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);

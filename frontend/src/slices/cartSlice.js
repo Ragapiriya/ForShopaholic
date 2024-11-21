@@ -94,6 +94,20 @@ const cartSlice = createSlice({
         shippingInfo: action.payload,
       };
     },
+    //reducer functionality -order completion
+    orderCompleted(state, action) {
+      //removing info from local storage & session storage
+      localStorage.removeItem("shippingInfo");
+      localStorage.removeItem("cartItems");
+      sessionStorage.removeItem("orderInfo");
+
+      return {
+        //same as initial state
+        items: [], //no items - empty array
+        loading: false,
+        shippingInfo: {}, //empty obj
+      };
+    },
   },
 });
 
@@ -107,6 +121,7 @@ export const {
   decreaseCartItemQuantity,
   removeItemFromCart,
   saveShippingInfo,
+  orderCompleted,
 } = actions; //actions creators
 
 export default reducer;
