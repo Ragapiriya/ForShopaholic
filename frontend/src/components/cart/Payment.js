@@ -11,7 +11,8 @@ import {
 import axios from "axios";
 import { toast } from "react-toastify";
 import { orderCompleted } from "../../slices/cartSlice";
-
+import { createOrder } from "../../actions/orderAction";
+import { clearError as clearOrderError } from "../../slices/orderSlice";
 export default function Payment() {
   const stripe = useStripe();
   const elements = useElements();
@@ -22,6 +23,7 @@ export default function Payment() {
   const { items: cartItems, shippingInfo } = useSelector(
     (state) => state.cartState
   );
+  const { error: orderError } = useSelector((state) => state.orderState);
   const paymentData = {
     amount: Math.round(orderInfo && orderInfo.totalPrice * 100),
     shipping: {
@@ -50,6 +52,15 @@ export default function Payment() {
 
   useEffect(() => {
     validateShipping(shippingInfo, navigate);
+    if (orderError) {
+      toast.error(orderError, {
+        position: "bottom-center",
+        onOpen: () => {
+          dispatch(clearOrderError());
+        },
+      });
+      return;
+    }
   });
   // const submitHandler = async (e) => {
   //   e.preventDefault();
@@ -92,53 +103,52 @@ export default function Payment() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    document.querySelector('#pay_btn').disabled = true;
+    document.querySelector("#pay_btn").disabled = true;
     try {
-        const {data} = await axios.post('/api/v1/payment/process', paymentData)
-        const clientSecret = data.client_secret
-        const result = await stripe.confirmCardPayment(clientSecret, {
-            payment_method: {
-                card: elements.getElement(CardNumberElement),
-                billing_details: {
-                    name: user.name,
-                    email: user.email
-                }
-            }
-        })
+      const { data } = await axios.post("/api/v1/payment/process", paymentData);
+      const clientSecret = data.client_secret;
+      const result = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardNumberElement),
+          billing_details: {
+            name: user.name,
+            email: user.email,
+          },
+        },
+      });
 
-        if(result.error){
-          console.log("Result error")
-            toast(result.error.message, {
-                type: 'error',
-                position: "bottom-center"
-            })
-            document.querySelector('#pay_btn').disabled = false;
-        }else{
-          if((await result).paymentIntent.status === 'succeeded') {
-              console.log("success payment")
-                toast.success('Payment Success!', {
-                    position: "bottom-center"
-                })
-                order.paymentInfo = {
-                    id: result.paymentIntent.id,
-                    status: result.paymentIntent.status
-                }
-                dispatch(orderCompleted());
-                navigate('/order/success');
-            }else{
-              console.log("Not success payment")
-                toast('Please Try again!', {
-                    type: 'warning',
-                    position:"bottom-center"
-                })
-            }
+      if (result.error) {
+        console.log("Result error");
+        toast(result.error.message, {
+          type: "error",
+          position: "bottom-center",
+        });
+        document.querySelector("#pay_btn").disabled = false;
+      } else {
+        if ((await result).paymentIntent.status === "succeeded") {
+          console.log("success payment");
+          toast.success("Payment Success!", {
+            position: "bottom-center",
+          });
+          order.paymentInfo = {
+            id: result.paymentIntent.id,
+            status: result.paymentIntent.status,
+          };
+          dispatch(orderCompleted());
+          dispatch(createOrder(order));
+          navigate("/order/success");
+        } else {
+          console.log("Not success payment");
+          toast("Please Try again!", {
+            type: "warning",
+            position: "bottom-center",
+          });
         }
-
-
+      }
     } catch (error) {
-        console.log("Out of trycatch error");
+      console.log("Out of trycatch error");
     }
-}
+  };
 
   return (
     <Fragment>
