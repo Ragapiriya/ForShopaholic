@@ -1,16 +1,25 @@
 import { Fragment, useEffect, useState } from "react";
-import { getProduct } from "../../actions/productAction";
+import { createReview, getProduct } from "../../actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Loader from "../layouts/Loader";
 import { Carousel } from "react-bootstrap";
 import MetaData from "../layouts/MetaData";
 import { addCartItem } from "../../actions/cartActions";
+import { Modal } from "react-bootstrap";
+import { toast } from "react-toastify";
+import { clearReviewSubmitted } from "../../slices/productSlice";
+
+
+
 export default function ProductDetail() {
-  const { product, loading } = useSelector((state) => state.productState);
+  const { product, loading, isSubmitted } = useSelector(
+    (state) => state.productState
+  );
   const dispatch = useDispatch();
   const { id } = useParams(); //getting parameters in URL
   const [quantity, setQuantity] = useState(1);
+  const [show, setShow] = useState(false);
 
   const increaseQuantity = () => {
     const count = document.querySelector(".count");
@@ -30,16 +39,36 @@ export default function ProductDetail() {
     const qty = count ? count.valueAsNumber - 1 : 1;
     setQuantity(qty);
   };
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [rating, setRating] = useState(1);
+  const [comment, setComment] = useState("");
+
+  const reviewHandler = () => {
+    const formData = new FormData();
+    formData.append("rating", rating);
+    formData.append("comment", comment);
+    formData.append("productId", id);
+    dispatch(createReview(formData));
+  };
   useEffect(() => {
     dispatch(getProduct(id));
-  }, [dispatch, id]);
+    if (isSubmitted) {
+      handleClose(); //closing popup after submitting the review
+
+      toast.alert("Review submitted successfully", {
+        position: "bottom-center",
+        onOpen: () => dispatch(clearReviewSubmitted()),
+      });
+    }
+  }, [dispatch, id,isSubmitted]);
   return (
     <Fragment>
       {loading ? (
         <Loader />
       ) : (
         <Fragment>
-          <MetaData title={product.name} />
+          <MetaData title={product && product.name} />
 
           <div className="row f-flex justify-content-around">
             <div className="col-12 col-lg-5 img-fluid" id="product_image">
@@ -127,7 +156,7 @@ export default function ProductDetail() {
                 id="cart_btn"
                 disabled={product.stock === 0 ? true : false}
                 className="btn btn-primary d-inline ml-4"
-                onClick={()=>dispatch(addCartItem(product._id,quantity))}
+                onClick={() => dispatch(addCartItem(product._id, quantity))}
               >
                 Add to Cart
               </button>
@@ -155,6 +184,7 @@ export default function ProductDetail() {
 
               <button
                 id="review_btn"
+                onClick={handleShow}
                 type="button"
                 className="btn btn-primary mt-4"
                 data-toggle="modal"
@@ -165,7 +195,7 @@ export default function ProductDetail() {
 
               <div className="row mt-2 mb-5">
                 <div className="rating w-50">
-                  <div
+                  {/* <div
                     className="modal fade"
                     id="ratingModal"
                     tabIndex="-1"
@@ -221,9 +251,50 @@ export default function ProductDetail() {
                             Submit
                           </button>
                         </div>
+
+                        
                       </div>
                     </div>
-                  </div>
+                  </div> */}
+                  <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Submit Review</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <ul className="stars">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <li
+                            className={`star ${star <= rating ? "orange" : ""}`}
+                            value={star}
+                            onClick={() => setRating(star)}
+                            onMouseOver={(e) =>
+                              e.target.classList.add("yellow")
+                            }
+                            onMouseOut={(e) =>
+                              e.target.classList.remove("yellow")
+                            }
+                          >
+                            <i className="fa fa-star"></i>
+                          </li>
+                        ))}
+                      </ul>
+
+                      <textarea
+                        name="review"
+                        id="review"
+                        className="form-control mt-3"
+                        onChange={(e) => setComment(e.target.value)}
+                      ></textarea>
+                      <button
+                        className="btn my-3 float-right review-btn px-4 text-white"
+                        aria-label="Close"
+                        disabled={loading}
+                        onClick={reviewHandler}
+                      >
+                        Submit
+                      </button>
+                    </Modal.Body>
+                  </Modal>
                 </div>
               </div>
             </div>
