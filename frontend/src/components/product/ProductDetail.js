@@ -12,6 +12,7 @@ import {
   clearReviewSubmitted,
   clearError as clearErrorReviews,
 } from "../../slices/productSlice";
+import ProductReview from "./ProductReview";
 
 export default function ProductDetail() {
   const {
@@ -78,7 +79,7 @@ export default function ProductDetail() {
     if (!product._id || isReviewSubmitted) {
       dispatch(getProduct(id));
     }
-  }, [dispatch, product._id, id,  isReviewSubmitted, error]);
+  }, [dispatch, product._id, id, isReviewSubmitted, error]);
   return (
     <Fragment>
       {loading ? (
@@ -261,6 +262,9 @@ export default function ProductDetail() {
               </div>
             </div>
           </div>
+          {product.reviews && product.reviews.length > 0 ? (
+            <ProductReview reviews={product.reviews} />
+          ) : null}
         </Fragment>
       )}
     </Fragment>
