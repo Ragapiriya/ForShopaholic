@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import {
   clearReviewSubmitted,
   clearError as clearErrorReviews,
+  clearProduct,
 } from "../../slices/productSlice";
 import ProductReview from "./ProductReview";
 
@@ -65,7 +66,6 @@ export default function ProductDetail() {
         position: "bottom-center",
         onOpen: () => dispatch(clearReviewSubmitted()),
       });
-      return;
     }
     if (error) {
       toast.error(error, {
@@ -79,7 +79,12 @@ export default function ProductDetail() {
     if (!product._id || isReviewSubmitted) {
       dispatch(getProduct(id));
     }
-  }, [dispatch, product._id, id, isReviewSubmitted, error]);
+    return () => {
+      //when we come out of productDetail component
+      //it will clear the loaded details of previous product
+      dispatch(clearProduct());
+    };
+  }, [dispatch, id, isReviewSubmitted, error]);
   return (
     <Fragment>
       {loading ? (
