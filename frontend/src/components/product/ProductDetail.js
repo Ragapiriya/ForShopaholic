@@ -8,14 +8,19 @@ import MetaData from "../layouts/MetaData";
 import { addCartItem } from "../../actions/cartActions";
 import { Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
-import { clearReviewSubmitted } from "../../slices/productSlice";
-
-
+import {
+  clearReviewSubmitted,
+  clearError as clearErrorReviews,
+} from "../../slices/productSlice";
 
 export default function ProductDetail() {
-  const { product, loading, isSubmitted } = useSelector(
-    (state) => state.productState
-  );
+  const {
+    product = {},
+    loading,
+    isReviewSubmitted,
+    error,
+  } = useSelector((state) => state.productState);
+  const { user } = useSelector((state) => state.authState);
   const dispatch = useDispatch();
   const { id } = useParams(); //getting parameters in URL
   const [quantity, setQuantity] = useState(1);
@@ -52,16 +57,28 @@ export default function ProductDetail() {
     dispatch(createReview(formData));
   };
   useEffect(() => {
-    dispatch(getProduct(id));
-    if (isSubmitted) {
+    if (isReviewSubmitted) {
       handleClose(); //closing popup after submitting the review
 
-      toast.alert("Review submitted successfully", {
+      toast.success("Review submitted successfully", {
         position: "bottom-center",
         onOpen: () => dispatch(clearReviewSubmitted()),
       });
+      return;
     }
-  }, [dispatch, id,isSubmitted]);
+    if (error) {
+      toast.error(error, {
+        position: "bottom-center",
+        onOpen: () => {
+          dispatch(clearErrorReviews());
+        },
+      });
+    }
+    //when there are no products or a new review is submitted
+    if (!product._id || isReviewSubmitted) {
+      dispatch(getProduct(id));
+    }
+  }, [dispatch, product._id, id,  isReviewSubmitted, error]);
   return (
     <Fragment>
       {loading ? (
@@ -181,81 +198,26 @@ export default function ProductDetail() {
               <p id="product_seller mb-3">
                 Sold by: <strong>{product.seller}</strong>
               </p>
-
-              <button
-                id="review_btn"
-                onClick={handleShow}
-                type="button"
-                className="btn btn-primary mt-4"
-                data-toggle="modal"
-                data-target="#ratingModal"
-              >
-                Submit Your Review
-              </button>
+              {user ? (
+                <button
+                  id="review_btn"
+                  onClick={handleShow}
+                  type="button"
+                  className="btn btn-primary mt-4"
+                  data-toggle="modal"
+                  data-target="#ratingModal"
+                >
+                  Submit Your Review
+                </button>
+              ) : (
+                <div className="alert alert-danger mt-5">
+                  {" "}
+                  Login to Post Review{" "}
+                </div>
+              )}
 
               <div className="row mt-2 mb-5">
                 <div className="rating w-50">
-                  {/* <div
-                    className="modal fade"
-                    id="ratingModal"
-                    tabIndex="-1"
-                    role="dialog"
-                    aria-labelledby="ratingModalLabel"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog" role="document">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title" id="ratingModalLabel">
-                            Submit Review
-                          </h5>
-                          <button
-                            type="button"
-                            className="close"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                          >
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div className="modal-body">
-                          <ul className="stars">
-                            <li className="star">
-                              <i className="fa fa-star"></i>
-                            </li>
-                            <li className="star">
-                              <i className="fa fa-star"></i>
-                            </li>
-                            <li className="star">
-                              <i className="fa fa-star"></i>
-                            </li>
-                            <li className="star">
-                              <i className="fa fa-star"></i>
-                            </li>
-                            <li className="star">
-                              <i className="fa fa-star"></i>
-                            </li>
-                          </ul>
-
-                          <textarea
-                            name="review"
-                            id="review"
-                            className="form-control mt-3"
-                          ></textarea>
-
-                          <button
-                            className="btn my-3 float-right review-btn px-4 text-white"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                          >
-                            Submit
-                          </button>
-                        </div>
-
-                        
-                      </div>
-                    </div>
-                  </div> */}
                   <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                       <Modal.Title>Submit Review</Modal.Title>
