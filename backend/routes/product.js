@@ -8,6 +8,7 @@ const {
   createReview,
   getReviews,
   deleteReview,
+  getAdminProducts,
 } = require("../controllers/productController");
 const router = expressModule.Router();
 const {
@@ -27,5 +28,8 @@ router.route("/review").delete(deleteReview);
 router
   .route("/admin/products/new")
   .post(isAuthenticatedUser, authorizeRoles("admin"), newProduct);
+  router
+  .route("/admin/products")
+  .get(isAuthenticatedUser, authorizeRoles("admin"), getAdminProducts);
 
 module.exports = router;

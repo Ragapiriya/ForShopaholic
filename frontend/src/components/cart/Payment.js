@@ -62,44 +62,6 @@ export default function Payment() {
       return;
     }
   },[]);
-  // const submitHandler = async (e) => {
-  //   e.preventDefault();
-  //   document.querySelector("#pay_btn").disabled = true;
-  //   try {
-  //     const data = await axios.post("/api/v1/payment/process", paymentData);
-  //     const clientSecret = data.client_secret;
-  //     const result = stripe.confirmCardPayment(clientSecret, {
-  //       payment_method: {
-  //         card: elements.getElement(CardNumberElement),
-  //         billing_details: {
-  //           name: user.name,
-  //           email: user.email,
-  //         },
-  //       },
-  //     });
-
-  //     if (result.error) {
-  //       //payment-not success
-  //       toast.error((await result).error.message, {
-  //         position: "bottom-center",
-  //       });
-  //       document.querySelector("#pay_btn").disabled = false;
-  //     } else {
-  //       //payment -success
-  //       if ((await result).paymentIntent.status === "succeeded") {
-  //         toast.success("Payment success", {
-  //           position: "bottom-center",
-  //         });
-  //         dispatch(orderCompleted());
-  //         navigate("/order/success");
-  //       } else {
-  //         toast.warning("Please Try Again!!", {
-  //           position: "bottom-center",
-  //         });
-  //       }
-  //     }
-  //   } catch (error) {}
-  // };
 
   const submitHandler = async (e) => {
     e.preventDefault();

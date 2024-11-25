@@ -36,7 +36,9 @@ exports.newProduct = catchAsyncError(async (req, res, next) => {
 //get single product - {{base_url}}/api/v1/product/:id
 //it is a handler function
 exports.getSingleProduct = async (req, res, next) => {
-  const product = await productModel.findById(req.params.id).populate('reviews.user','name email');
+  const product = await productModel
+    .findById(req.params.id)
+    .populate("reviews.user", "name email");
   if (!product) {
     // return next(new ErrorHandler("Product Not Found", 404)); //this is a object passed to next middleware bcuz it shoule be returned without going further donw to succes message.
 
@@ -196,5 +198,15 @@ exports.deleteReview = catchAsyncError(async (req, res, next) => {
   });
   res.status(200).json({
     success: true,
+  });
+});
+
+//ADMIN
+//get admin prodcts -api/v1/admin/products
+exports.getAdminProducts = catchAsyncError(async (req, res, next) => {
+  const products = await productModel.find();
+  res.status(200).send({
+    success: true,
+    products,
   });
 });

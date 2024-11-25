@@ -30,6 +30,7 @@ import OrderSuccess from "./components/cart/OrderSuccess";
 import UserOrder from "./components/order/UserOrders";
 import OrderDetail from "./components/order/OrderDetail";
 import Dashboard from "./components/admin/Dashboard";
+import ProductList from "./components/admin/ProductList";
 
 function App() {
   const dispatch = useDispatch();
@@ -150,7 +151,16 @@ function App() {
                 </ProtectedRoute>
               }
             />
+             <Route
+              path="/admin/products"
+              element={
+                <ProtectedRoute isAdmin={true}>
+                  <ProductList />{" "}
+                </ProtectedRoute>
+              }
+            />
           </Routes>
+          
           <Footer />
         </HelmetProvider>
       </div>
