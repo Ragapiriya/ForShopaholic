@@ -7,6 +7,11 @@ import {
   productsRequest,
   productsSuccess,
 } from "../slices/productsSlice";
+import {
+  newProductFail,
+  newProductRequest,
+  newProductSuccess,
+} from "../slices/productSlice";
 
 export const getProducts = (currentPage) => async (dispatch) => {
   try {
@@ -59,5 +64,27 @@ export const getAdminProducts = async (dispatch) => {
   } catch (error) {
     //data is the json data with success,message fields
     dispatch(adminProductsFail(error.response.data.message));
+  }
+};
+
+export const createNewProduct = (productData) => async (dispatch) => {
+  try {
+    dispatch(newProductRequest()); //dispatch the action 'productRequest' from reducers
+    const config = {
+      //multipart form data
+      headers: {
+        //userData contains different types of data [img], so --> changing the content-type
+        "Content-type": "multipart/form-data",
+      },
+    };
+    const { data } = await axios.post(
+      `/api/v1/admin/products/new`,
+      productData,
+      config
+    );
+    dispatch(newProductSuccess(data)); //dispatch another action after api call
+  } catch (error) {
+    //data is the json data with success,message fields
+    dispatch(newProductFail(error.response.data.message));
   }
 };

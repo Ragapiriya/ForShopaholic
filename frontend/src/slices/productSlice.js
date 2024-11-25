@@ -11,6 +11,7 @@ const productSlice = createSlice({
     loading: false,
     product: {},
     isReviewSubmitted: false,
+    isProductCreated: false,
   },
   reducers: {
     //reducer functionality 1
@@ -85,6 +86,43 @@ const productSlice = createSlice({
         product: {},
       };
     },
+    //admin reducer functionality 1 - create product
+    newProductRequest(state, action) {
+      //previous state, action dispatched
+      return {
+        //returning the state changes
+        ...state,
+        loading: true,
+      };
+    },
+    //reducer functionality 2
+    newProductSuccess(state, action) {
+      //successful API request
+      return {
+        ...state,
+        loading: false,
+        isProductCreated: true,
+        product: action.payload.product,
+      };
+    },
+    //reducer functionality 3
+    newProductFail(state, action) {
+      //Failed API request
+      return {
+        ...state,
+        loading: false,
+        isProductCreated: false,
+        error: action.payload,
+      };
+    },
+    //reducer functionality - clearing the state after creating the product. 
+    clearProductCreated(state,action)
+    { 
+      return {
+        ...state,
+        isProductCreated:false,
+      }
+    }
   },
 });
 
@@ -100,6 +138,10 @@ export const {
   clearError,
   clearReviewSubmitted,
   clearProduct,
+  newProductRequest,
+  newProductSuccess,
+  newProductFail,
+  clearProductCreated,
 } = actions; //actions creators
 
 export default reducer;

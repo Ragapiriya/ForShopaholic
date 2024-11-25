@@ -5,7 +5,8 @@ import { toast } from "react-toastify";
 import { clearUpdateProfile } from "../../slices/authSlice";
 
 export default function UpdateProfile() {
-  const { error, isUpdated, user } = useSelector((state) => state.authState);
+  const {isUpdated, user } = useSelector((state) => state.authState);
+  const {error} = useSelector(state =>state.productState);
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -50,7 +51,6 @@ export default function UpdateProfile() {
         position: "bottom-center",
         onOpen: () => dispatch(clearUpdateProfile()) 
       });
-      console.log("Updat4ed");
       return;
     }
 
