@@ -2,7 +2,7 @@ import React from "react";
 import Search from "./Search";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { DropdownButton, Dropdown, Image } from "react-bootstrap";
+import { Dropdown, Image } from "react-bootstrap";
 import { logout } from "../../actions/userAction";
 export default function Header() {
   const { isAuthenticated, user } = useSelector((state) => {
@@ -47,6 +47,16 @@ export default function Header() {
               <span>{user.name}</span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
+              {user.role === "admin" && (
+                <Dropdown.Item
+                  onClick={() => {
+                    navigate("/admin/dashboard");
+                  }}
+                  className="text-dark"
+                >
+                  Dashboard
+                </Dropdown.Item>
+              )}
               <Dropdown.Item
                 onClick={() => {
                   navigate("/myprofile");

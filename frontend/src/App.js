@@ -29,6 +29,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./components/cart/OrderSuccess";
 import UserOrder from "./components/order/UserOrders";
 import OrderDetail from "./components/order/OrderDetail";
+import Dashboard from "./components/admin/Dashboard";
 
 function App() {
   const dispatch = useDispatch();
@@ -138,6 +139,18 @@ function App() {
               />
             </Routes>
           </div>
+
+          {/* admin routes */}
+          <Routes>
+            <Route
+              path="/admin/dashboard"
+              element={
+                <ProtectedRoute isAdmin={true}>
+                  <Dashboard />{" "}
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
           <Footer />
         </HelmetProvider>
       </div>
