@@ -11,7 +11,7 @@ import ProductSearch from "./components/product/ProductSearch";
 import Login from "./components/user/login";
 import Register from "./components/user/register";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loadUser } from "./actions/userAction";
 import Profile from "./components/user/Profile";
 import ProtectedRoute from "./components/route/ProtectedRoute";
@@ -33,17 +33,19 @@ import Dashboard from "./components/admin/Dashboard";
 import ProductList from "./components/admin/ProductList";
 import NewProduct from "./components/admin/NewProduct";
 import UpdateProduct from "./components/admin/UpdateProduct";
+import store from "./store";
 
 function App() {
   const dispatch = useDispatch();
   const [stripeApiKey, setstripeApiKey] = useState("");
   useEffect(() => {
-    dispatch(loadUser);
-    async function getStripeApiKey() {
-      const { data } = await axios.get("/api/v1/stripeapi");
-      setstripeApiKey(data.stripeApiKey);
-    }
-    getStripeApiKey();
+      store.dispatch(loadUser);
+      async function getStripeApiKey() {
+        const { data } = await axios.get("/api/v1/stripeapi");
+        setstripeApiKey(data.stripeApiKey);
+      }
+      getStripeApiKey();
+    
   }, [dispatch]);
   return (
     <Router>
@@ -153,7 +155,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-             <Route
+            <Route
               path="/admin/products"
               element={
                 <ProtectedRoute isAdmin={true}>
@@ -169,7 +171,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-             <Route
+            <Route
               path="/admin/product/:id"
               element={
                 <ProtectedRoute isAdmin={true}>
@@ -178,7 +180,7 @@ function App() {
               }
             />
           </Routes>
-          
+
           <Footer />
         </HelmetProvider>
       </div>

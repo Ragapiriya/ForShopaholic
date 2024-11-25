@@ -66,7 +66,7 @@ export default function UserOrder() {
   return (
     <Fragment>
       <MetaData title="My Orders" />
-      <h1 className="mt-5">My Orders</h1>
+      <h1 className="h1 mt-5">My Orders</h1>
       {/* datatable */}
       <MDBDataTable
         className="px-3"

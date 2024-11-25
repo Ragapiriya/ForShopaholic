@@ -91,7 +91,6 @@ export default function NewProduct() {
         <Sidebar />
       </div>
       <div className="col-12 col-md-10">
-        <h1 className="my-4">Products List</h1>
         <Fragment>
           <div className="wrapper my-5">
             <form
@@ -99,7 +98,7 @@ export default function NewProduct() {
               className="shadow-lg"
               enctype="multipart/form-data"
             >
-              <h1 className="mb-4">New Product</h1>
+              <h1 className="h1 mb-4">New Product</h1>
 
               <div className="form-group">
                 <label htmlFor="name_field">Name</label>
@@ -130,7 +129,7 @@ export default function NewProduct() {
                   onChange={(e) => setDescription(e.target.value)}
                   value={description}
                   id="description_field"
-                  rows="5"
+                  rows="3"
                 ></textarea>
               </div>
 

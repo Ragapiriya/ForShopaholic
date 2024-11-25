@@ -7,7 +7,7 @@ import Product from "./product/Product";
 import { toast } from "react-toastify";
 import Pagination from "react-js-pagination";
 
-export default function Home() { 
+export default function Home() {  
   const dispatch = useDispatch();
   const { products, loading, error, productsCount, resultPerPage } =
     useSelector((state) => {

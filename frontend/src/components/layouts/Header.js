@@ -41,7 +41,7 @@ export default function Header() {
               <figure className="avatar avatar-nav">
                 <Image
                   width="50px"
-                  src={user.avatar ?? "./images/default_avatar.jpg"}
+                  src={user.avatar ?? "./images/default_avatar.png"}
                 />
               </figure>
               <span>{user.name}</span>
