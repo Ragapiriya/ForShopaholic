@@ -65,7 +65,6 @@ useEffect(()=>{
         <Sidebar />
       </div>
       <div className="col-12 col-md-10">
-        <h1 className="my-4">Products List</h1>
        <Fragment>
         {loading ?
         <Loader/> : 

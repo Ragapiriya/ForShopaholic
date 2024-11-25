@@ -31,6 +31,7 @@ import UserOrder from "./components/order/UserOrders";
 import OrderDetail from "./components/order/OrderDetail";
 import Dashboard from "./components/admin/Dashboard";
 import ProductList from "./components/admin/ProductList";
+import NewProduct from "./components/admin/NewProduct";
 
 function App() {
   const dispatch = useDispatch();
@@ -156,6 +157,14 @@ function App() {
               element={
                 <ProtectedRoute isAdmin={true}>
                   <ProductList />{" "}
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/products/create"
+              element={
+                <ProtectedRoute isAdmin={true}>
+                  <NewProduct />{" "}
                 </ProtectedRoute>
               }
             />
