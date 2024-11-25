@@ -63,10 +63,23 @@ exports.getSingleProduct = async (req, res, next) => {
   });
 };
 
-//update product -- {{base_url}}/api/v1/products/:id
+//admin update product -- {{base_url}}/api/v1/admin/products/:id
 //it is a handler function
 exports.updateProduct = async (req, res, next) => {
   let product = await productModel.findById(req.params.id);
+  let images = [];
+  if(req.body.imagesCleared === 'false')
+  { //old images still exist
+    images = product.images;
+  }
+  if (req.files.length > 0) {
+    //when there images in the request
+    req.files.forEach((file) => {
+      let url = `${process.env.BACKEND_URL}/uploads/product/${file.originalname}`;
+      images.push({ image: url });
+    });
+  }
+  req.body.images = images;
   if (!product) {
     return res.status(404).json({
       success: false,

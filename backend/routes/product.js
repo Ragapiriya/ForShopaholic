@@ -33,12 +33,11 @@ const upload = multer({
 });
 router.route("/products").get(getProducts);
 router.route("/product/:id").get(getSingleProduct); //'id' is a parameter
-router.route("/product/:id").put(updateProduct);
 router.route("/review").put(isAuthenticatedUser, createReview);
 router.route("/reviews").get(getReviews);
 router.route("/review").delete(deleteReview);
 
-//ADMIN
+//ADMIN routes
 router
   .route("/admin/products/new")
   .post(
@@ -51,7 +50,16 @@ router
   .route("/admin/products")
   .get(isAuthenticatedUser, authorizeRoles("admin"), getAdminProducts);
 
-  router
+router
   .route("/admin/product/:id")
   .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteProduct);
+
+router
+  .route("/admin/product/:id")
+  .put(
+    isAuthenticatedUser,
+    authorizeRoles("admin"),
+    upload.array("images"),
+    updateProduct
+  );
 module.exports = router;

@@ -1,12 +1,12 @@
 import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "./Sidebar";
-import { useNavigate } from "react-router-dom";
-import { createNewProduct } from "../../actions/productsActions";
-import { clearError, clearProductCreated } from "../../slices/productSlice";
+import { useNavigate, useParams } from "react-router-dom";
+import { clearError, clearProductUpdated } from "../../slices/productSlice";
 import { toast } from "react-toastify";
+import { getProduct, updateProduct } from "../../actions/productAction";
 
-export default function NewProduct() {
+export default function UpdateProduct() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -14,11 +14,14 @@ export default function NewProduct() {
   const [stock, setStock] = useState(0);
   const [seller, setSeller] = useState("");
   const [images, setImages] = useState([]);
+  const [imagesCleared, setImagesCleared] = useState(false);
+
   const [imagesPreview, setImagesPreview] = useState([]);
 
+  const { id: productId } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading, isProductCreated, error } = useSelector(
+  const { loading, isProductUpdated, error, product } = useSelector(
     (state) => state.productState
   );
   const categories = [
@@ -58,17 +61,43 @@ export default function NewProduct() {
     formData.append("description", description);
     formData.append("seller", seller);
     formData.append("category", category);
+    formData.append("imagesCleared", imagesCleared);
+
     images.forEach((image) => {
       formData.append("images", image);
     });
-    dispatch(createNewProduct(formData));
+    dispatch(updateProduct(productId,formData));
   };
+  const clearImagesHandler = () => {
+    setImages([]);
+    setImagesPreview([]);
+    setImagesCleared(true);
+  };
+
+  //getting prod details
   useEffect(() => {
-    if (isProductCreated) {
+    if (product._id) {
+      setName(product.name);
+      setPrice(product.price);
+      setStock(product.stock);
+      setDescription(product.description);
+      setCategory(product.category);
+      setSeller(product.seller);
+      let images = []; 
+      product.images.forEach((image) => {
+        images.push(image.image);
+      });
+      setImagesPreview(images);
+    }
+  }, [product._id]);
+
+  //alert
+  useEffect(() => {
+    if (isProductUpdated) {
       //successful creation
-      toast.success("Product Created Successfully", {
+      toast.success("Product Updated Successfully", {
         position: "bottom-center",
-        onOpen: () => dispatch(clearProductCreated()),
+        onOpen: () => dispatch(clearProductUpdated()),
       });
       navigate("/admin/products");
       return;
@@ -84,14 +113,14 @@ export default function NewProduct() {
       });
       return;
     }
-  }, [dispatch, isProductCreated, error, navigate]);
+    dispatch(getProduct(productId));
+  }, [dispatch, isProductUpdated, error, navigate]);
   return (
     <div className="row">
       <div className="col-12 col-md-2">
         <Sidebar />
       </div>
       <div className="col-12 col-md-10">
-        <h1 className="my-4">Products List</h1>
         <Fragment>
           <div className="wrapper my-5">
             <form
@@ -99,7 +128,7 @@ export default function NewProduct() {
               className="shadow-lg"
               enctype="multipart/form-data"
             >
-              <h1 className="mb-4">New Product</h1>
+              <h1 className="mb-4">Update Product</h1>
 
               <div className="form-group">
                 <label htmlFor="name_field">Name</label>
@@ -188,6 +217,15 @@ export default function NewProduct() {
                     Choose Images
                   </label>
                 </div>
+                {imagesPreview.length > 0 && (
+                  <span
+                    className="mr-2"
+                    style={{ cursor: "pointer" }}
+                    onClick={clearImagesHandler}
+                  >
+                    <i className="fa fa-trash"></i>
+                  </span>
+                )}
                 {imagesPreview.map((image) => (
                   <img
                     src={image}
@@ -206,7 +244,7 @@ export default function NewProduct() {
                 disabled={loading}
                 className="btn btn-block py-3"
               >
-                CREATE
+                UPDATE
               </button>
             </form>
           </div>
