@@ -83,7 +83,7 @@ exports.updateProduct = async (req, res, next) => {
   });
 };
 
-//delete product --{{base_url}}/api/v1/products/:id
+//delete product --{{base_url}}/api/v1/admin/product/:id
 exports.deleteProduct = async (req, res, next) => {
   try {
     const product = await productModel.findByIdAndDelete(req.params.id);

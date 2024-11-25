@@ -3,6 +3,9 @@ import {
   createReviewFail,
   createReviewRequest,
   createReviewSuccess,
+  deleteProductFail,
+  deleteProductRequest,
+  deleteProductSuccess,
   productFail,
   productRequest,
   productSuccess,
@@ -33,5 +36,16 @@ export const createReview = (reviewData) => async (dispatch) => {
     dispatch(createReviewSuccess(data)); //dispatch another action after api call
   } catch (error) {
     dispatch(createReviewFail(error.response.data.message));
+  }
+};
+//getting product id as a parameter
+export const deleteProduct = (id) => async (dispatch) => {
+  try {
+    dispatch(deleteProductRequest()); //dispatch the action 'productRequest' from reducers
+    const { data } = await axios.delete(`/api/v1/admin/product/${id}`); //data = json data
+    dispatch(deleteProductSuccess(data)); //dispatch another action after api call
+  } catch (error) {
+    //data is the json data with success,message fields
+    dispatch(deleteProductFail(error.response.data.message));
   }
 };
