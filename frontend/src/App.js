@@ -37,6 +37,7 @@ import store from "./store";
 import OrderList from "./components/admin/OrderList";
 import UpdateOrder from "./components/admin/UpdateOrder";
 import UserList from "./components/admin/UserList";
+import UpdateUser from "./components/admin/UpdateUser";
 
 function App() {
   const dispatch = useDispatch();
@@ -203,6 +204,14 @@ function App() {
               element={
                 <ProtectedRoute isAdmin={true}>
                   <UserList />{" "}
+                </ProtectedRoute>
+              }
+            />
+               <Route
+              path="/admin/user/:id"
+              element={
+                <ProtectedRoute isAdmin={true}>
+                  <UpdateUser />{" "}
                 </ProtectedRoute>
               }
             />
