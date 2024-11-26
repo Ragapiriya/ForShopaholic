@@ -82,6 +82,7 @@ nav {
   padding: 1rem;
 }
 
+#status_btn,
 #login_btn,
 #view_btn {
   background-color: #d5cabd;
@@ -130,19 +131,25 @@ nav {
 .card-text {
   font-size: 1.4rem;
 }
-
+#status_btn,
 #view_btn {
   background-color: #845ec2;
   transition: transform 0.2s ease;
   /* background: radial-gradient(circle, rgba(132,94,194,1) 0%, rgba(78,131,151,1) 100%); */
   color: white;
 }
+#status_btn:hover,
 #view_btn:hover {
   transform: scale(1.03);
 }
+
+#status_btn
+{
+  border-radius: 100px;
+}
 .card-img-top {
   width: 200px;
-  height: 150px;
+  height: 200px;
 }
 
 .ratings {

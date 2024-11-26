@@ -85,7 +85,6 @@ const orderSlice = createSlice({
     },
     clearError(state, action) {
       return {
-        //returning the state changes
         ...state,
         error: null,
       };

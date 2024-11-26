@@ -80,7 +80,7 @@ exports.updateOrder = catchAsyncError(async (req, res, next) => {
     //Delivered already
     return next(
       new ErrorHandler(
-        "Order ${req.params.id} has been already delivered. Status cannot be modified.",
+        `Order ${req.params.id} has been already delivered. Status cannot be modified.`,
         400
       )
     );
