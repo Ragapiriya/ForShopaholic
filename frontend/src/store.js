@@ -5,6 +5,7 @@ import productReducer from "./slices/productSlice";
 import authReducer from "./slices/authSlice";
 import cartReducer from "./slices/cartSlice";
 import orderReducer from "./slices/orderSlice";
+import userRedcer from "./slices/userSlice";
 
 //reducer is for product, user, order
 //here we combine it
@@ -14,6 +15,7 @@ const reducer = combineReducers({
   authState: authReducer,
   cartState: cartReducer,
   orderState: orderReducer,
+  userState: userRedcer,
 });
 
 //returns a store object

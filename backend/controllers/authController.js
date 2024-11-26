@@ -250,7 +250,7 @@ exports.deleteUser = catchAsyncError(async (req, res, next) => {
   }
   //user exists
   //proceeds to deletion
-  await userModel.remove();
+  await userModel.findByIdAndDelete(req.params.id);
   res.status(200).json({
     success: true,
   });
