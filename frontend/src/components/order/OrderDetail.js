@@ -16,7 +16,7 @@ export default function OrderDetail() {
     orderItems = [],
     totalPrice = 0,
     paymentInfo = {},
-  } = orderDetail;
+  } = orderDetail || {};
   const isPaid =
     paymentInfo && paymentInfo.status === "succeeded" ? true : false;
 
@@ -43,13 +43,13 @@ export default function OrderDetail() {
               </p>
               <p>
                 <b>Phone:</b>
-                {shippingInfo.phoneNo}
+                { shippingInfo.phoneNo}
               </p>
               <p className="mb-4">
                 <b>Address:</b>
-                {shippingInfo.address}, {shippingInfo.city},{" "}
-                {shippingInfo.postalCode}, {shippingInfo.state},{" "}
-                {shippingInfo.country}
+                { shippingInfo.address}, { shippingInfo.city},{" "}
+                { shippingInfo.postalCode}, { shippingInfo.state},{" "}
+                { shippingInfo.country}
               </p>
               <p>
                 <b>Amount:</b> ${totalPrice}
