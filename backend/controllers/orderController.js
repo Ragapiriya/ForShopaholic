@@ -109,7 +109,7 @@ exports.deleteOrder = catchAsyncError(async (req, res, next) => {
   if (!order) {
     return next(new ErrorHandler(`Order ${req.params.id} not found`, 404));
   }
-  await order.remove();
+  await order.remove;
   res.status(200).json({
     success: true,
   });
