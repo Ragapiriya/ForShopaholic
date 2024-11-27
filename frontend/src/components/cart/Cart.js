@@ -57,7 +57,7 @@ export default function Cart() {
                       </div>
 
                       <div className="col-4 col-lg-2 mt-4 mt-lg-0">
-                        <p id="card_item_price">Rs.{item.price}</p>
+                        <p id="card_item_price">$.{item.price}</p>
                       </div>
 
                       <div className="col-4 col-lg-3 mt-4 mt-lg-0">
@@ -114,7 +114,7 @@ export default function Cart() {
                 <p>
                   Est. total:{" "}
                   <span className="order-summary-values">
-                    Rs.
+                    $.
                     {items.reduce(
                       (acc, item) => acc + item.quantity * item.price,
                       0

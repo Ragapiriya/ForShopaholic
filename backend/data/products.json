@@ -1,117 +1,578 @@
 [
-    {
-        "name": "OPPO F21s Pro 5G",
-        "price": 245.67,
-        "description": "OPPO F21s Pro 5G is a powerful device with a RAM extension feature, that offers brilliant operational speed to users.",
-        "ratings": 4.5,
-        "images": [
-            {
-                "image": "/images/products/1.jpg"
-            },
-            {
-                "image": "/images/products/2.jpg"
-            }
-        ],
-        "category": "Mobile Phones",
-        "seller": "Amazon",
-        "stock": 5,
-        "numOfReviews": 15,
-        "reviews": []
-    },
-    {
-        "name": "WRISTIO HD, Bluetooth Calling Smart Watch",
-        "price": 150.32,
-        "description": "Minix watches are exclusively designed to fulfill the advanced tech needs of today’s generation.",
-        "ratings": 3.5,
-        "images": [
-            {
-                "image": "/images/products/2.jpg"
-            }
-        ],
-        "category": "Accessories",
-        "seller": "Flipkart",
-        "stock": 9,
-        "numOfReviews": 5,
-        "reviews": []
-    },
-    {
-        "name": "Dell Inspiron 3511 Laptop",
-        "price": 440.57,
-        "description": "Dell Inspiron 3511 11th Generation Intel Core i5-1135G7 Processor (8MB Cache, up to 4.2 GHz);Operating System: Windows 10 Home Single Language, English",
-        "ratings": 2,
-        "images": [
-            {
-                "image": "/images/products/3.jpg"
-            }
-        ],
-        "category": "Laptops",
-        "seller": "Ebay",
-        "stock": 9,
-        "numOfReviews": 12,
-        "reviews": []
-    },
-    {
-        "name": "Lenovo IdeaPad Slim 3 Laptop",
-        "price": 250.45,
-        "description": "Lenovo IdeaPad Slim 311th Gen Intel Core i5-1135G7 | Speed: 2.4 GHz (Base) - 4.2 GHz (Max) | 4 Cores | 8 Threads | 8 MB Cache",
-        "ratings": 4,
-        "images": [
-          {
-            "image": "/images/products/4.jpg"
-          }
-        ],
-        "category": "Laptops",
-        "seller": "Ebay",
-        "stock": 9,
-        "numOfReviews": 12,
-        "reviews": []
-      },
+  {
+    "name": "Dove Body Scrub ",
+    "price": 45,
+    "description": "Dove Body Scrub - pomegranate seeds & shea butter",
+    "ratings": 4.5,
+    "images": [
       {
-        "name": "ASUS VivoBook 15 Laptop",
-        "price": 767.32,
-        "description": "ASUS VivoBook 15 15.6-inch (39.62 cm) HD, Dual Core Intel Celeron N4020, Thin and Light Laptop (4GB RAM/256GB SSD/Integrated Graphics/Windows 11 Home/Transparent Silver/1.8 Kg), X515MA-BR011W",
-        "ratings": 5,
-        "images": [
-          {
-            "image": "/images/products/3.jpg"
-          }
-        ],
-        "category": "Laptops",
-        "seller": "Ebay",
-        "stock": 9,
-        "numOfReviews": 12,
-        "reviews": []
-    },
-    {
-        "name": "PTron Newly Launched Tangent Sports, 60Hrs Playtime",
-        "price": 15.46,
-        "description": "Gigantic 60 + Hours of music playtime on a single charge; BT5.2 Wireless headphones with ENC (Environmental Noise Cancellation) Technology to enhance your voice quality over the voice calls",
-        "ratings": 5,
-        "images": [
-            {
-                "image": "/images/products/4.jpg"
-            }
-        ],
-        "category": "Headphones",
-        "seller": "Amazon",
-        "stock": 4,
-        "numOfReviews": 20,
-        "reviews": []
-    },
-    {
-        "name": "Campus Men's Maxico Running Shoes",
-        "price": 10.12,
-        "description": "The high raised back cover with extra padding.",
-        "ratings": 3,
-        "images": [
-            {
-                "image": "/images/products/2.jpg"
-            }
-        ],
-        "category": "Sports",
-        "seller": "Ebay",
-        "stock": 6,
-        "numOfReviews": 9,
-        "reviews": []
-    }
+        "image": "/images/productss/doveBodyScrub3.jpg"
+      }
+    ],
+    "category": "Body Scrub",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Soap puerly pampering sweet cream",
+    "price": 3,
+    "description": "Beauty bar with sweet cream and peony scent. Moisturizing cream.",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveBodySoap3.jpg"
+      }
+    ],
+    "category": "Body Soap",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Revival ritual Conditioner",
+    "price": 3,
+    "description": "Dove Revival ritual Conditioner",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveConditioner2.jpg"
+      }
+    ],
+    "category": "Hair Conditioner",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove advanced care deodorant spray",
+    "price": 5,
+    "description": "Dove advanced care deodorant spray. 127g/220ml",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveDeodorant4.jpg"
+      }
+    ],
+    "category": "Deodorant",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  }, 
+  {
+    "name": "CeraVe Hydrating Facial Cleanser",
+    "price": 45,
+    "description": "Cleanses, hydrates & helps restore the protective skin barrier.For Normal to Dry skin.",
+    "ratings": 4.5,
+    "images": [
+      {
+        "image": "/images/productss/ceraveCleanser1.jpg"
+      }
+    ],
+    "category": "Facial Cleanser",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "CeraVe Renewing SA facial Cleanser",
+    "price": 45,
+    "description": "Gently cleanses & exfoliates while softening & smoothing skin. For Normal skin.",
+    "ratings": 4.5,
+    "images": [
+      {
+        "image": "/images/productss/ceraveCleanser2.jpg"
+      }
+    ],
+    "category": "Facial Cleanser",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "CeraVe Moisturizing Lotion",
+    "price": 45,
+    "description": "Moisturises and helps restore the protective skin barrier of the face and body.",
+    "ratings": 4.5,
+    "images": [
+      {
+        "image": "/images/productss/ceraveLotion1.jpg"
+      }
+    ],
+    "category": "Moisturizing Lotion",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Cetaphil Gentle Skin Cleanser",
+    "price": 45,
+    "description": "Hydrates as it cleanses to help soothe and replenish skin's moisture. For All skin types.",
+    "ratings": 4.5,
+    "images": [
+      {
+        "image": "/images/productss/cetaphilCleanser1.jpg"
+      }
+    ],
+    "category": "Facial Cleanser",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Cetaphil Moisturizing Lotion",
+    "price": 45,
+    "description": "Instantly soothes and protects skin from dryness for 48 hours",
+    "ratings": 4.5,
+    "images": [
+      {
+        "image": "/images/productss/cetaphilLotion1.jpg"
+      }
+    ],
+    "category": "Moisturizing Lotion",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Whiped Body Cream",
+    "price": 45,
+    "description": "Whipped body cream - pomegranate & shea butter. For all skin types.",
+    "ratings": 4.5,
+    "images": [
+      {
+        "image": "/images/productss/doveBodycream.jpg"
+      }
+    ],
+    "category": "Body Cream",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Nourishing Body Care",
+    "price": 45,
+    "description": "24 hours moisturization. For Face and body",
+    "ratings": 4.5,
+    "images": [
+      {
+        "image": "/images/productss/doveBodycream1.jpg"
+      }
+    ],
+    "category": "Body Cream",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Whipped Body Cream",
+    "price": 45,
+    "description": "Dove Whipped Body Cream - Macadamia & rice milk. For all skin types.",
+    "ratings": 4.5,
+    "images": [
+      {
+        "image": "/images/productss/doveBodycream4.jpg"
+      }
+    ],
+    "category": "Body Cream",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Body Scrub",
+    "price": 45,
+    "description": "Dove Body Scrub - Himalayan salt & rose oil",
+    "ratings": 4.5,
+    "images": [
+      {
+        "image": "/images/productss/doveBodyScrub1.jpg"
+      }
+    ],
+    "category": "Body Scrub",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove exfoliating body scrub",
+    "price": 45,
+    "description": "Exfoliating body polish - crushed cherries & chia milk. ",
+    "ratings": 4.5,
+    "images": [
+      {
+        "image": "/images/productss/doveBodyScrub2.jpg"
+      }
+    ],
+    "category": "Body Scrub",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  
+  {
+    "name": "Dove Body Scrub ",
+    "price": 45,
+    "description": "Dove Body Scrub - white peach & rice mil",
+    "ratings": 4.5,
+    "images": [
+      {
+        "image": "/images/productss/doveBodyScrub4.jpg"
+      }
+    ],
+    "category": "Body Scrub",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Body Scrub ",
+    "price": 45,
+    "description": "Dove Body Scrub -crushed macadamia & rice milk. ",
+    "ratings": 4.5,
+    "images": [
+      {
+        "image": "/images/productss/doveBodyScrub5.jpg"
+      }
+    ],
+    "category": "Body Scrub",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Soap Go Fresh Revive",
+    "price": 3,
+    "description": "Beauty bar with pomegranate & lemon verbena scent. Moisturizing cream.",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveBodySoap1.jpg"
+      }
+    ],
+    "category": "Body Soap",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Soap pink/rosa",
+    "price": 3,
+    "description": "Beauty bar for deep moisture. Moisturizing cream.",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveBodySoap2.jpg"
+      }
+    ],
+    "category": "Body Soap",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  
+  {
+    "name": "Dove Soap purely pampering pistachio cream",
+    "price": 3,
+    "description": "Beauty bar with pistachio cream and magnolia scent. Moisturizing cream. ",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveBodySoap4.jpg"
+      }
+    ],
+    "category": "Body Soap",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Soap go fresh cool moisture",
+    "price": 3,
+    "description": "Beauty bar with cucumber & green tea scent. Moisturizing cream.",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveBodySoap5.jpg"
+      }
+    ],
+    "category": "Body Soap",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Soap purely pampering",
+    "price": 3,
+    "description": "Dove Soap purely pampering ",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveBodySoap6.jpg"
+      }
+    ],
+    "category": "Body Soap",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Soap purely pampering shea butter",
+    "price": 3,
+    "description": "Beauty bar with shea butter ",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveBodySoap7.jpg"
+      }
+    ],
+    "category": "Body Soap",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Intensive Repair Conditioner",
+    "price": 3,
+    "description": "Dove Intensive Repair Conditioner",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveConditioner1.jpg"
+      }
+    ],
+    "category": "Hair Conditioner",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+
+  {
+    "name": "Dove Daily Shine Conditioner",
+    "price": 3,
+    "description": "Dove Daily Shine Conditioner",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveConditioner3.jpg"
+      }
+    ],
+    "category": "Hair Conditioner",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Daily Glowing Conditioner",
+    "price": 3,
+    "description": "Dove Daily Glowing Conditioner",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveConditioner4.jpg"
+      }
+    ],
+    "category": "Hair Conditioner",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Argain oil Conditioner",
+    "price": 3,
+    "description": "Dove Argain oil Conditioner",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveConditioner5.jpg"
+      }
+    ],
+    "category": "Hair Conditioner",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Color Care Shampoo",
+    "price": 3,
+    "description": "Dove Color Care Shampoo",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveShampoo1.jpg"
+      }
+    ],
+    "category": "Shampoo",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Intensive Repaier Shampoo",
+    "price": 3,
+    "description": "Dove Intensive Repaier Shampoo",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveShampoo2.jpg"
+      }
+    ],
+    "category": "Shampoo",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Nourishing Oil Care Shampoo",
+    "price": 3,
+    "description": "Dove Nourishing Oil Care Shampoo",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveShampoo3.jpg"
+      }
+    ],
+    "category": "Shampoo",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove Hair Fall Rescue Shampoo",
+    "price": 3,
+    "description": "Dove Hair Fall Rescue Shampoo",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveShampoo4.jpg"
+      }
+    ],
+    "category": "Shampoo",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove advanced care deodorant spray",
+    "price": 5,
+    "description": "Dove advanced care dry spray - go fresh",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveDeodorant1.jpg"
+      }
+    ],
+    "category": "Deodorant",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Dove 0% aluminium deodorant spray",
+    "price": 5,
+    "description": "Dove 0% aluminium deodorant spray",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveDeodorant2.jpg"
+      }
+    ],
+    "category": "Deodorant",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },{
+    "name": "Dove go fresh deodorant spray",
+    "price": 5,
+    "description": "Dove go fresh deodorant spray",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveDeodorant3.jpg"
+      }
+    ],
+    "category": "Deodorant",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+ {
+    "name": "Dove relaxing shower gel",
+    "price": 5,
+    "description": "Lavender oil & chamomile. Calms & Comforts skin. 650ml",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveShowerGel5.jpg"
+      }
+    ],
+    "category": "Shower Gel",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  }, {
+    "name": "Dove refreshing shower gel",
+    "price": 5,
+    "description": "Cucumber & Green tea. 650ml ",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveShowerGel6.jpg"
+      }
+    ],
+    "category": "Shower Gel",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  }, {
+    "name": "Dove Glowing Shower Gel",
+    "price": 5,
+    "description": "Dove Glowing Shower Gel. Nourishing body wash. 650ml",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/doveShowerGel7.jpg"
+      }
+    ],
+    "category": "Shower Gel",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  }
 ]
