@@ -10,10 +10,12 @@ const productSlice = createSlice({
     //before refresh the page
     loading: false,
     product: {},
+    reviews: [],
     isReviewSubmitted: false,
     isProductCreated: false,
     isProductDeleted: false,
     isProductUpdated: false,
+    isReviewDeleted: false,
   },
   reducers: {
     //reducer functionality 1
@@ -195,6 +197,67 @@ const productSlice = createSlice({
         isProductUpdated: false,
       };
     },
+    //ADMIN - reducer functionality 1 - getting reviews
+    reviewsRequest(state, action) {
+      //previous state, action dispatched
+      return {
+        //returning the state changes
+        ...state,
+        loading: true,
+      };
+    },
+    //reducer functionality 2
+    reviewsSuccess(state, action) {
+      //successful API request
+      return {
+        ...state,
+        loading: false,
+        reviews: action.payload.reviews,
+      };
+    },
+    //reducer functionality 3
+    reviewsFail(state, action) {
+      //Failed API request
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    },
+    //ADMIN reducer functionality 1 - delete review
+    deleteReviewRequest(state, action) {
+      //previous state, action dispatched
+      return {
+        //returning the state changes
+        ...state,
+        loading: true,
+      };
+    },
+    //reducer functionality 2
+    deleteReviewSuccess(state, action) {
+      //successful API request
+      return {
+        ...state,
+        loading: false,
+        isReviewDeleted: true,
+      };
+    },
+    //reducer functionality 3
+    deleteReviewFail(state, action) {
+      //Failed API request
+      return {
+        ...state,
+        loading: false,
+        isReviewDeleted: false,
+        error: action.payload,
+      };
+    },
+    //reducer functionality - clearing the state after deleting the review.
+    clearReviewDeleted(state, action) {
+      return {
+        ...state,
+        isReviewDeleted: false,
+      };
+    },
   },
 });
 
@@ -222,6 +285,13 @@ export const {
   updateProductSuccess,
   updateProductFail,
   clearProductUpdated,
+  reviewsRequest,
+  reviewsSuccess,
+  reviewsFail,
+  deleteReviewRequest,
+  deleteReviewSuccess,
+  deleteReviewFail,
+  clearReviewDeleted,
 } = actions; //actions creators
 
 export default reducer;
