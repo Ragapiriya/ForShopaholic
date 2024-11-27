@@ -22,7 +22,7 @@ export default function Header() {
             <img
               width="150px"
               alt="ForShopaholic"
-              src="/images/logo1.png"
+              src="/images/logo3.png"
               className="logo-image"
             />
           </Link>

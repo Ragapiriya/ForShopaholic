@@ -27,7 +27,7 @@ export default function ConfirmOrder() {
       taxPrice,
       totalPrice,
     };
-    sessionStorage.setItem('orderInfo',JSON.stringify(data));
+    sessionStorage.setItem('orderInfo',JSON.stringify(data)); 
     navigate('/payment');
   };
   useEffect(() => {
