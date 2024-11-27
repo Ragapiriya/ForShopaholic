@@ -15,7 +15,7 @@ export default function ConfirmOrder() {
     (acc, item) => acc + item.price * item.quantity,
     0
   );
-  const shippingPrice = itemsPrice > 1000 ? 0 : 25;
+  const shippingPrice = itemsPrice > 1000 ? 0 : 2;
   let taxPrice = Number(0.05 * itemsPrice);
   const totalPrice = Number(itemsPrice + shippingPrice + taxPrice).toFixed(2);
   taxPrice = Number(taxPrice).toFixed(2);
@@ -95,21 +95,21 @@ export default function ConfirmOrder() {
             <hr />
             <p>
               Subtotal:{" "}
-              <span className="order-summary-values">Rs. {itemsPrice}</span>
+              <span className="order-summary-values">$ {itemsPrice}</span>
             </p>
             <p>
               Shipping:{" "}
-              <span className="order-summary-values">Rs. {shippingPrice}</span>
+              <span className="order-summary-values">$ {shippingPrice}</span>
             </p>
             <p>
-              Tax: <span className="order-summary-values">Rs. {taxPrice}</span>
+              Tax: <span className="order-summary-values">$ {taxPrice}</span>
             </p>
 
             <hr />
 
             <p>
               Total:{" "}
-              <span className="order-summary-values">Rs. {totalPrice}</span>
+              <span className="order-summary-values">$ {totalPrice}</span>
             </p>
 
             <hr />
