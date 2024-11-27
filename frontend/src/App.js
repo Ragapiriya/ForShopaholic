@@ -38,6 +38,7 @@ import OrderList from "./components/admin/OrderList";
 import UpdateOrder from "./components/admin/UpdateOrder";
 import UserList from "./components/admin/UserList";
 import UpdateUser from "./components/admin/UpdateUser";
+import ReviewList from "./components/admin/ReviewList";
 
 function App() {
   const dispatch = useDispatch();
@@ -212,6 +213,14 @@ function App() {
               element={
                 <ProtectedRoute isAdmin={true}>
                   <UpdateUser />{" "}
+                </ProtectedRoute>
+              }
+            />
+               <Route
+              path="/admin/reviews"
+              element={
+                <ProtectedRoute isAdmin={true}>
+                  <ReviewList />{" "}
                 </ProtectedRoute>
               }
             />

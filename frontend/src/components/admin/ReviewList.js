@@ -1,50 +1,51 @@
 import { Button } from "react-bootstrap";
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../layouts/Loader";
 import { MDBDataTable } from "mdbreact";
 import { toast } from "react-toastify";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import { clearError, clearUserDeleted } from "../../slices/userSlice";
-import { deleteUser, getUsers } from "../../actions/userAction";
-export default function UserList() {
+import { clearError, clearReviewDeleted } from "../../slices/productSlice";
+import { deleteReview, getReviews } from "../../actions/productAction";
+export default function ReviewList() {
   const {
-    users = [],
+    reviews = [],
     loading = true,
     error,
-    isUserDeleted,
-  } = useSelector((state) => state.userState);
-
+    isReviewDeleted,
+  } = useSelector((state) => state.productState);
+  const [productId, setProductId] = useState("");
   const deleteHandler = (e, id) => {
     e.target.disabled = true; //disabling the button
-    dispatch(deleteUser(id));
+    dispatch(deleteReview(productId, id));
   };
-  const setUsers = () => {
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(getReviews(productId));
+  };
+  const setReviews = () => {
     const data = {
       columns: [
         { label: "ID", field: "id", sort: "asc" },
-        { label: "Name", field: "name", sort: "asc" },
-        { label: "Email", field: "email", sort: "asc" },
-        { label: "Role", field: "role", sort: "asc" },
+        { label: "Rating", field: "rating", sort: "asc" },
+        { label: "User", field: "user", sort: "asc" },
+        { label: "Comment", field: "comment", sort: "asc" },
         { label: "Actions", field: "actions", sort: "asc" },
       ],
       rows: [],
     };
-    users.forEach((user) => {
+    reviews.forEach((review) => {
       data.rows.push({
-        id: user._id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
+        id: review._id,
+        rating: review.rating,
+        user: review.user.name,
+        comment: review.comment,
         actions: (
           <Fragment>
-            <Link to={`/admin/user/${user._id}`} className="btn">
-              <i className="fa fa-pencil"></i>
-            </Link>
             <Button
               className="btn btn-danger py-1 px-2 ml-2"
-              onClick={(e) => deleteHandler(e, user._id)}
+              onClick={(e) => deleteHandler(e, review._id)}
             >
               <i className="fa fa-trash"></i>
             </Button>
@@ -66,29 +67,52 @@ export default function UserList() {
       });
       return;
     }
-    if (isUserDeleted) {
+    if (isReviewDeleted) {
       //successful creation
-      toast.success("User Deleted Successfully", {
+      toast.success("Review Deleted Successfully", {
         position: "bottom-center",
-        onOpen: () => dispatch(clearUserDeleted()),
+        onOpen: () => dispatch(clearReviewDeleted()),
       });
+      dispatch(getReviews(productId));
+
       return;
     }
-    dispatch(getUsers);
-  }, [dispatch, error, isUserDeleted, navigate]);
+  }, [error, isReviewDeleted, navigate]);
   return (
     <div className="row">
       <div className="col-12 col-md-2">
         <Sidebar />
       </div>
       <div className="col-12 col-md-10">
-        <h1 className="h1 my-4">User List</h1>
+        <h1 className="h1 my-4">Review List</h1>
+        <div className="row justify-content-center mt-5">
+          <div className="col-5">
+            <form onSubmit={submitHandler}>
+              <div className="form-group">
+                <label>Product ID</label>
+                <input
+                  type="text"
+                  onChange={(e) => setProductId(e.target.value)}
+                  value={productId}
+                  className="form-control"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="btn btn-block py-2"
+              >
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
         <Fragment>
           {loading ? (
             <Loader />
           ) : (
             <MDBDataTable
-              data={setUsers()}
+              data={setReviews()}
               bordered
               striped
               hover
