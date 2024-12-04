@@ -1,7 +1,7 @@
 [
   {
     "name": "Dove Body Scrub ",
-    "price": 10,
+    "price": 12,
     "description": "Dove Body Scrub - pomegranate seeds & shea butter",
     "ratings": 4.5,
     "images": [
@@ -12,14 +12,14 @@
     "category": "Body Scrub",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove Soap puerly pampering sweet cream",
-    "price": 3,
+    "price": 5,
     "description": "Beauty bar with sweet cream and peony scent. Moisturizing cream.",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveBodySoap3.jpg"
@@ -28,14 +28,14 @@
     "category": "Body Soap",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove Revival ritual Conditioner",
-    "price": 3,
+    "price": 6,
     "description": "Dove Revival ritual Conditioner",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveConditioner2.jpg"
@@ -44,14 +44,14 @@
     "category": "Hair Conditioner",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove advanced care deodorant spray",
     "price": 5,
     "description": "Dove advanced care deodorant spray. 127g/220ml",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveDeodorant4.jpg"
@@ -60,7 +60,7 @@
     "category": "Deodorant",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   }, 
   {
@@ -76,7 +76,7 @@
     "category": "Facial Cleanser",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
@@ -92,7 +92,7 @@
     "category": "Facial Cleanser",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
@@ -108,7 +108,7 @@
     "category": "Moisturizing Lotion",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
@@ -124,7 +124,7 @@
     "category": "Facial Cleanser",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
@@ -140,12 +140,12 @@
     "category": "Moisturizing Lotion",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove Whiped Body Cream",
-    "price": 20,
+    "price": 8,
     "description": "Whipped body cream - pomegranate & shea butter. For all skin types.",
     "ratings": 4.5,
     "images": [
@@ -156,12 +156,12 @@
     "category": "Body Cream",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove Nourishing Body Care",
-    "price": 15,
+    "price": 7,
     "description": "24 hours moisturization. For Face and body",
     "ratings": 4.5,
     "images": [
@@ -172,12 +172,12 @@
     "category": "Body Cream",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove Whipped Body Cream",
-    "price": 21,
+    "price": 8,
     "description": "Dove Whipped Body Cream - Macadamia & rice milk. For all skin types.",
     "ratings": 4.5,
     "images": [
@@ -188,7 +188,7 @@
     "category": "Body Cream",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
@@ -204,7 +204,7 @@
     "category": "Body Scrub",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
@@ -220,7 +220,7 @@
     "category": "Body Scrub",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   
@@ -237,7 +237,7 @@
     "category": "Body Scrub",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
@@ -253,14 +253,14 @@
     "category": "Body Scrub",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove Soap Go Fresh Revive",
     "price": 3,
     "description": "Beauty bar with pomegranate & lemon verbena scent. Moisturizing cream.",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveBodySoap1.jpg"
@@ -269,14 +269,14 @@
     "category": "Body Soap",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove Soap pink/rosa",
     "price": 3,
     "description": "Beauty bar for deep moisture. Moisturizing cream.",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveBodySoap2.jpg"
@@ -285,7 +285,7 @@
     "category": "Body Soap",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   
@@ -293,7 +293,7 @@
     "name": "Dove Soap purely pampering pistachio cream",
     "price": 3,
     "description": "Beauty bar with pistachio cream and magnolia scent. Moisturizing cream. ",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveBodySoap4.jpg"
@@ -302,14 +302,14 @@
     "category": "Body Soap",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove Soap go fresh cool moisture",
     "price": 3,
     "description": "Beauty bar with cucumber & green tea scent. Moisturizing cream.",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveBodySoap5.jpg"
@@ -318,14 +318,14 @@
     "category": "Body Soap",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove Soap purely pampering",
     "price": 3,
     "description": "Dove Soap purely pampering ",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveBodySoap6.jpg"
@@ -334,14 +334,14 @@
     "category": "Body Soap",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove Soap purely pampering shea butter",
     "price": 3,
     "description": "Beauty bar with shea butter ",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveBodySoap7.jpg"
@@ -350,14 +350,14 @@
     "category": "Body Soap",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove Intensive Repair Conditioner",
     "price": 3,
     "description": "Dove Intensive Repair Conditioner",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveConditioner1.jpg"
@@ -366,7 +366,7 @@
     "category": "Hair Conditioner",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
  
@@ -374,7 +374,7 @@
     "name": "Dove Daily Shine Conditioner",
     "price": 3,
     "description": "Dove Daily Shine Conditioner",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveConditioner3.jpg"
@@ -383,14 +383,14 @@
     "category": "Hair Conditioner",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove Daily Glowing Conditioner",
     "price": 3,
     "description": "Dove Daily Glowing Conditioner",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveConditioner4.jpg"
@@ -399,14 +399,14 @@
     "category": "Hair Conditioner",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove Argain oil Conditioner",
     "price": 3,
     "description": "Dove Argain oil Conditioner",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveConditioner5.jpg"
@@ -415,14 +415,14 @@
     "category": "Hair Conditioner",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove Color Care Shampoo",
     "price": 3,
     "description": "Dove Color Care Shampoo",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveShampoo1.jpg"
@@ -431,14 +431,14 @@
     "category": "Shampoo",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove Intensive Repaier Shampoo",
     "price": 3,
     "description": "Dove Intensive Repaier Shampoo",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveShampoo2.jpg"
@@ -447,14 +447,14 @@
     "category": "Shampoo",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove Nourishing Oil Care Shampoo",
     "price": 3,
     "description": "Dove Nourishing Oil Care Shampoo",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveShampoo3.jpg"
@@ -463,14 +463,14 @@
     "category": "Shampoo",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove Hair Fall Rescue Shampoo",
     "price": 3,
     "description": "Dove Hair Fall Rescue Shampoo",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveShampoo4.jpg"
@@ -479,14 +479,14 @@
     "category": "Shampoo",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove advanced care deodorant spray",
     "price": 5,
     "description": "Dove advanced care dry spray - go fresh",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveDeodorant1.jpg"
@@ -495,14 +495,14 @@
     "category": "Deodorant",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Dove 0% aluminium deodorant spray",
     "price": 5,
     "description": "Dove 0% aluminium deodorant spray",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveDeodorant2.jpg"
@@ -511,13 +511,13 @@
     "category": "Deodorant",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },{
     "name": "Dove go fresh deodorant spray",
     "price": 5,
     "description": "Dove go fresh deodorant spray",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveDeodorant3.jpg"
@@ -526,14 +526,14 @@
     "category": "Deodorant",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
  {
     "name": "Dove relaxing shower gel",
     "price": 5,
     "description": "Lavender oil & chamomile. Calms & Comforts skin. 650ml",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveShowerGel5.jpg"
@@ -542,13 +542,13 @@
     "category": "Shower Gel",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   }, {
     "name": "Dove refreshing shower gel",
     "price": 5,
     "description": "Cucumber & Green tea. 650ml ",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveShowerGel6.jpg"
@@ -557,13 +557,13 @@
     "category": "Shower Gel",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   }, {
     "name": "Dove Glowing Shower Gel",
     "price": 5,
     "description": "Dove Glowing Shower Gel. Nourishing body wash. 650ml",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/doveShowerGel7.jpg"
@@ -572,7 +572,7 @@
     "category": "Shower Gel",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   
@@ -580,7 +580,7 @@
     "name": "Vaseline Cocoa Radiant",
     "price": 10,
     "description": "Vaseline Cocoa Radiant with pure cocoa butter. Body Lotion.",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/vaselineBodyCream1.jpg"
@@ -589,14 +589,14 @@
     "category": "Body Cream",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Vaseline Cocoa Radiant",
     "price": 10,
     "description": "Vaseline Cocoa Radiant with pure cocoa butter. Body Lotion.",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/vaselineBodyCream1.jpg"
@@ -605,13 +605,13 @@
     "category": "Body Cream",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },  {
     "name": "Vaseline Healthy White",
     "price": 10,
     "description": "Vaseline healthy white. Lightening with vitamin B3 & triple sunscreens.",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/vaselineBodyCream2.jpg"
@@ -620,13 +620,13 @@
     "category": "Body Cream",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },  {
     "name": "Vaseline Intensive Care",
     "price": 10,
     "description": "Vaseline Intensive Care. Essential healing. Clinically proven to keep dry skin healed for 3 weeks",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/vaselineBodyCream3.jpg"
@@ -635,13 +635,13 @@
     "category": "Body Cream",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },  {
     "name": "Vaseline Intensive Care. ",
     "price": 10,
     "description": "Cocoa Radiant Body Oil with pure coconut butter.",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/vaselineBodyOil2.jpg"
@@ -650,14 +650,14 @@
     "category": "Body Oil",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Vaseline Lip Care",
     "price": 10,
     "description": "Rosy lips. Long lasting Internsive Moisturization",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/vaselineLipBalm1.jpg"
@@ -666,14 +666,14 @@
     "category": "Lip Balm",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Vaseline Lip Care",
     "price": 10,
     "description": "Rosy glow. Soft pink tint & glossy lips. 24 hour moinsturized lips.",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/vaselineLipBalm2.jpg"
@@ -682,14 +682,14 @@
     "category": "Lip Balm",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Vaseline Lip Therapy",
     "price": 10,
     "description": "Rosy lips for soft, pink lips.",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/vaselineLipBalm3.jpg"
@@ -698,14 +698,14 @@
     "category": "Lip Balm",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Vaseline Lip Therapy",
     "price": 10,
     "description": "Original. For smooth, soft lips.",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/vaselineLipBalm5.jpg"
@@ -714,14 +714,14 @@
     "category": "Lip Balm",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Neutrogena Hydro Boost cleanser",
     "price": 10,
     "description": "Boosts hydration. Leaves skin refreshingly clear and touchably supple.",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/neutrogenaCleanser1.jpg"
@@ -730,14 +730,14 @@
     "category": "Facial Cleanser",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Neutrogena Hydro Water Gel",
     "price": 10,
     "description": "Contains Hyaluronic Acid",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/neutrogenaCream1.jpg"
@@ -746,14 +746,14 @@
     "category": "Moisturizing Lotion",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Neutrogena Oil-Free Acne Wash",
     "price": 10,
     "description": "Facial cleanser for acne-prone skin",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/neutrogenaFaceWash.jpg"
@@ -762,13 +762,13 @@
     "category": "Facial Cleanser",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },  {
     "name": "Neutrogena Refreshingly Clear Face Wash",
     "price": 10,
     "description": "With pink grapefruit & vitamin C. Cleanses for clearer radiant skin",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/neutrogenaFaceWash1.jpg"
@@ -777,13 +777,13 @@
     "category": "Facial Cleanser",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },  {
     "name": "Neutrogena Oil Balancing Face Wash",
-    "price": 10,
+    "price": 7 ,
     "description": "With line & aloe ver. Cleanses and removes excess oil for a mattifying effect.",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/neutrogenaFaceWAsh3.jpg"
@@ -792,14 +792,14 @@
     "category": "Facial Cleanser",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
     "name": "Neutrogena UltraSheer dry-touch sunscreen",
-    "price": 10,
+    "price": 15,
     "description": "Broad spectrum SPF 100+",
-    "ratings": 3.5,
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/neutrogenaSunscreen1.jpg"
@@ -808,14 +808,14 @@
     "category": "Sunscreen",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   },
   {
-    "name": "Neutrogena Hydro Boost cleanser",
-    "price": 10,
-    "description": "Water gel Lotion sunsfcreem. Broad spectrum SPF 50",
-    "ratings": 3.5,
+    "name": "Neutrogena Hydro Boost sunscreen",
+    "price": 15,
+    "description": "Water gel Lotion sunscreen. Broad spectrum SPF 50",
+    "ratings": 4,
     "images": [
       {
         "image": "/images/productss/neutrogenaSunscreen2.jpg"
@@ -824,7 +824,7 @@
     "category": "Sunscreen",
     "seller": "Amazon",
     "stock": 50,
-    "numOfReviews": 0,
+    "numOfReviews": 5,
     "reviews": []
   }
 ]

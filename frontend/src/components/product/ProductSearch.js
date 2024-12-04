@@ -16,7 +16,7 @@ export default function ProductSearch() {
     (state) => state.productsState
   );
   const { keyword } = useParams(); // getting the keyword from the current url
-  const [price, setPrice] = useState([1, 1000]);
+  const [price, setPrice] = useState([1, 100]);
   const categories = [
     "Facial Cleanser",
     "Moisturizing Lotion",
@@ -62,10 +62,10 @@ export default function ProductSearch() {
                     range={true}
                     marks={{
                       1: "$1",
-                      1000: "$1000",
+                      100: "$100",
                     }}
                     min={1}
-                    max={1000}
+                    max={100}
                     defaultValue={price}
                     onChangeComplete={(price) => {
                       setPrice(price);
