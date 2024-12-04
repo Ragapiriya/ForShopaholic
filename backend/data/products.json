@@ -1,7 +1,7 @@
 [
   {
     "name": "Dove Body Scrub ",
-    "price": 45,
+    "price": 10,
     "description": "Dove Body Scrub - pomegranate seeds & shea butter",
     "ratings": 4.5,
     "images": [
@@ -65,7 +65,7 @@
   }, 
   {
     "name": "CeraVe Hydrating Facial Cleanser",
-    "price": 45,
+    "price": 7,
     "description": "Cleanses, hydrates & helps restore the protective skin barrier.For Normal to Dry skin.",
     "ratings": 4.5,
     "images": [
@@ -81,7 +81,7 @@
   },
   {
     "name": "CeraVe Renewing SA facial Cleanser",
-    "price": 45,
+    "price": 8,
     "description": "Gently cleanses & exfoliates while softening & smoothing skin. For Normal skin.",
     "ratings": 4.5,
     "images": [
@@ -97,7 +97,7 @@
   },
   {
     "name": "CeraVe Moisturizing Lotion",
-    "price": 45,
+    "price": 9,
     "description": "Moisturises and helps restore the protective skin barrier of the face and body.",
     "ratings": 4.5,
     "images": [
@@ -113,7 +113,7 @@
   },
   {
     "name": "Cetaphil Gentle Skin Cleanser",
-    "price": 45,
+    "price": 7,
     "description": "Hydrates as it cleanses to help soothe and replenish skin's moisture. For All skin types.",
     "ratings": 4.5,
     "images": [
@@ -129,7 +129,7 @@
   },
   {
     "name": "Cetaphil Moisturizing Lotion",
-    "price": 45,
+    "price":9,
     "description": "Instantly soothes and protects skin from dryness for 48 hours",
     "ratings": 4.5,
     "images": [
@@ -145,7 +145,7 @@
   },
   {
     "name": "Dove Whiped Body Cream",
-    "price": 45,
+    "price": 20,
     "description": "Whipped body cream - pomegranate & shea butter. For all skin types.",
     "ratings": 4.5,
     "images": [
@@ -161,7 +161,7 @@
   },
   {
     "name": "Dove Nourishing Body Care",
-    "price": 45,
+    "price": 15,
     "description": "24 hours moisturization. For Face and body",
     "ratings": 4.5,
     "images": [
@@ -177,7 +177,7 @@
   },
   {
     "name": "Dove Whipped Body Cream",
-    "price": 45,
+    "price": 21,
     "description": "Dove Whipped Body Cream - Macadamia & rice milk. For all skin types.",
     "ratings": 4.5,
     "images": [
@@ -193,7 +193,7 @@
   },
   {
     "name": "Dove Body Scrub",
-    "price": 45,
+    "price": 11,
     "description": "Dove Body Scrub - Himalayan salt & rose oil",
     "ratings": 4.5,
     "images": [
@@ -209,7 +209,7 @@
   },
   {
     "name": "Dove exfoliating body scrub",
-    "price": 45,
+    "price": 13,
     "description": "Exfoliating body polish - crushed cherries & chia milk. ",
     "ratings": 4.5,
     "images": [
@@ -226,7 +226,7 @@
   
   {
     "name": "Dove Body Scrub ",
-    "price": 45,
+    "price": 12,
     "description": "Dove Body Scrub - white peach & rice mil",
     "ratings": 4.5,
     "images": [
@@ -242,7 +242,7 @@
   },
   {
     "name": "Dove Body Scrub ",
-    "price": 45,
+    "price": 11,
     "description": "Dove Body Scrub -crushed macadamia & rice milk. ",
     "ratings": 4.5,
     "images": [
@@ -369,7 +369,7 @@
     "numOfReviews": 0,
     "reviews": []
   },
-
+ 
   {
     "name": "Dove Daily Shine Conditioner",
     "price": 3,
@@ -570,6 +570,258 @@
       }
     ],
     "category": "Shower Gel",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  
+  {
+    "name": "Vaseline Cocoa Radiant",
+    "price": 10,
+    "description": "Vaseline Cocoa Radiant with pure cocoa butter. Body Lotion.",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/vaselineBodyCream1.jpg"
+      }
+    ],
+    "category": "Body Cream",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Vaseline Cocoa Radiant",
+    "price": 10,
+    "description": "Vaseline Cocoa Radiant with pure cocoa butter. Body Lotion.",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/vaselineBodyCream1.jpg"
+      }
+    ],
+    "category": "Body Cream",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },  {
+    "name": "Vaseline Healthy White",
+    "price": 10,
+    "description": "Vaseline healthy white. Lightening with vitamin B3 & triple sunscreens.",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/vaselineBodyCream2.jpg"
+      }
+    ],
+    "category": "Body Cream",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },  {
+    "name": "Vaseline Intensive Care",
+    "price": 10,
+    "description": "Vaseline Intensive Care. Essential healing. Clinically proven to keep dry skin healed for 3 weeks",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/vaselineBodyCream3.jpg"
+      }
+    ],
+    "category": "Body Cream",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },  {
+    "name": "Vaseline Intensive Care. ",
+    "price": 10,
+    "description": "Cocoa Radiant Body Oil with pure coconut butter.",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/vaselineBodyOil2.jpg"
+      }
+    ],
+    "category": "Body Oil",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Vaseline Lip Care",
+    "price": 10,
+    "description": "Rosy lips. Long lasting Internsive Moisturization",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/vaselineLipBalm1.jpg"
+      }
+    ],
+    "category": "Lip Balm",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Vaseline Lip Care",
+    "price": 10,
+    "description": "Rosy glow. Soft pink tint & glossy lips. 24 hour moinsturized lips.",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/vaselineLipBalm2.jpg"
+      }
+    ],
+    "category": "Lip Balm",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Vaseline Lip Therapy",
+    "price": 10,
+    "description": "Rosy lips for soft, pink lips.",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/vaselineLipBalm3.jpg"
+      }
+    ],
+    "category": "Lip Balm",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Vaseline Lip Therapy",
+    "price": 10,
+    "description": "Original. For smooth, soft lips.",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/vaselineLipBalm5.jpg"
+      }
+    ],
+    "category": "Lip Balm",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Neutrogena Hydro Boost cleanser",
+    "price": 10,
+    "description": "Boosts hydration. Leaves skin refreshingly clear and touchably supple.",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/neutrogenaCleanser1.jpg"
+      }
+    ],
+    "category": "Facial Cleanser",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Neutrogena Hydro Water Gel",
+    "price": 10,
+    "description": "Contains Hyaluronic Acid",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/neutrogenaCream1.jpg"
+      }
+    ],
+    "category": "Moisturizing Lotion",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Neutrogena Oil-Free Acne Wash",
+    "price": 10,
+    "description": "Facial cleanser for acne-prone skin",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/neutrogenaFaceWash.jpg"
+      }
+    ],
+    "category": "Facial Cleanser",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },  {
+    "name": "Neutrogena Refreshingly Clear Face Wash",
+    "price": 10,
+    "description": "With pink grapefruit & vitamin C. Cleanses for clearer radiant skin",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/neutrogenaFaceWash1.jpg"
+      }
+    ],
+    "category": "Facial Cleanser",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },  {
+    "name": "Neutrogena Oil Balancing Face Wash",
+    "price": 10,
+    "description": "With line & aloe ver. Cleanses and removes excess oil for a mattifying effect.",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/neutrogenaFaceWAsh3.jpg"
+      }
+    ],
+    "category": "Facial Cleanser",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Neutrogena UltraSheer dry-touch sunscreen",
+    "price": 10,
+    "description": "Broad spectrum SPF 100+",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/neutrogenaSunscreen1.jpg"
+      }
+    ],
+    "category": "Sunscreen",
+    "seller": "Amazon",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Neutrogena Hydro Boost cleanser",
+    "price": 10,
+    "description": "Water gel Lotion sunsfcreem. Broad spectrum SPF 50",
+    "ratings": 3.5,
+    "images": [
+      {
+        "image": "/images/productss/neutrogenaSunscreen2.jpg"
+      }
+    ],
+    "category": "Sunscreen",
     "seller": "Amazon",
     "stock": 50,
     "numOfReviews": 0,

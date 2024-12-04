@@ -18,18 +18,18 @@ export default function ProductSearch() {
   const { keyword } = useParams(); // getting the keyword from the current url
   const [price, setPrice] = useState([1, 1000]);
   const categories = [
-    "Electronics",
-    "Mobile Phones",
-    "Laptops",
-    "Accessories",
-    "Headphones",
-    "Foods",
-    "Books",
-    "Cloths/Shoes",
-    "Beauty/Health",
-    "Sports",
-    "Outdoor",
-    "Home",
+    "Facial Cleanser",
+    "Moisturizing Lotion",
+    "Body Cream",
+    "Body Scrub",
+    "Body Soap",
+    "Body Oil",
+    "Hair Conditioner", 
+    "Shampoo",
+    "Deodorant",
+    "Shower Gel",
+    "Lip Balm",
+    "Sunscreen",
   ];
   const [category, setCategory] = useState(null);
   const [rating, setRating] = useState(0);
