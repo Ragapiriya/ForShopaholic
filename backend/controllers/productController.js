@@ -26,10 +26,15 @@ exports.getProducts = async (req, res, next) => {
 //it is a handler function
 exports.newProduct = catchAsyncError(async (req, res, next) => {
   let images = [];
+  let BASE_URL = process.env.BACKEND_URL;
+  if(process.env.NODE_ENV === "production")
+  {
+    BASE_URL = `${req.protocol}://${req.get('host')}`; //server_url
+  }
   if (req.files.length > 0) {
     //when there images in the request
     req.files.forEach((file) => {
-      let url = `${process.env.BACKEND_URL}/uploads/product/${file.originalname}`;
+      let url = `${BASE_URL}/uploads/product/${file.originalname}`;
       images.push({ image: url });
     });
   }
@@ -72,10 +77,15 @@ exports.updateProduct = async (req, res, next) => {
   { //old images still exist
     images = product.images;
   }
+  let BASE_URL = process.env.BACKEND_URL;
+  if(process.env.NODE_ENV === "production")
+  {
+    BASE_URL = `${req.protocol}://${req.get('host')}`; //server_url
+  }
   if (req.files.length > 0) {
     //when there images in the request
     req.files.forEach((file) => {
-      let url = `${process.env.BACKEND_URL}/uploads/product/${file.originalname}`;
+      let url = `${BASE_URL}/uploads/product/${file.originalname}`;
       images.push({ image: url });
     });
   }

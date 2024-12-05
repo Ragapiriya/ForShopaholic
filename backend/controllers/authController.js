@@ -11,10 +11,15 @@ const crypto = require("crypto");
 exports.registerUser = catchAsyncError(async (req, res, next) => {
   const { name, email, password } = req.body;
   let avatar; //undefined - optional
+  let BASE_URL = process.env.BACKEND_URL;
+  if(process.env.NODE_ENV === "production")
+  {
+    BASE_URL = `${req.protocol}://${req.get('host')}`; //server_url
+  }
   if (req.file) {
     //if user uploads a img file.
     //img url is assigned to avatar field
-    avatar = `${process.env.BACKEND_URL}/uploads/user/${req.file.originalname}`;
+    avatar = `${BASE_URL}/uploads/user/${req.file.originalname}`;
   }
   const user = await userModel.create({
     name,
@@ -81,9 +86,13 @@ exports.forgotPassword = catchAsyncError(async (req, res, next) => {
   }
   const resetToken = user.getResetToken();
   await user.save({ validateBeforeSave: false }); //update user document
-
+  let BASE_URL = process.env.FRONTEND_URL;
+  if(process.env.NODE_ENV === "production")
+  {
+    BASE_URL = `${req.protocol}://${req.get('host')}`; //server_url
+  }
   //create reset url for backend api [ not for frontend]
-  const resetUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`; //= http://127.0.0.1/api/v1/password/token/{token}
+  const resetUrl = `${BASE_URL}/password/reset/${resetToken}`; //= http://127.0.0.1/api/v1/password/token/{token}
 
   //message content for email
   const message = `Your password reset url is as follows \n\n ${resetUrl} \n\n If you have not requested this email, then ignore it.`;
@@ -180,10 +189,15 @@ exports.updateProfile = catchAsyncError(async (req, res, next) => {
     email: req.body.email,
   };
   let avatar; //undefined - optional
+  let BASE_URL = process.env.BACKEND_URL;
+  if(process.env.NODE_ENV === "production")
+  {
+    BASE_URL = `${req.protocol}://${req.get('host')}`; //server_url
+  }
   if (req.file) {
     //if user uploads a img file.
     //img url is assigned to avatar field
-    avatar = `${process.env.BACKEND_URL}/uploads/user/${req.file.originalname}`;
+    avatar = `${BASE_URL}/uploads/user/${req.file.originalname}`;
     newUserData = { ...newUserData, avatar };
   }
   const user = await userModel.findByIdAndUpdate(req.user.id, newUserData, {
